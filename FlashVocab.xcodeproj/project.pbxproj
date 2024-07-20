@@ -9,18 +9,32 @@
 /* Begin PBXBuildFile section */
 		750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750105F92C4836DD000EB40C /* FlashVocabApp.swift */; };
 		750105FC2C4836DD000EB40C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750105FB2C4836DD000EB40C /* ContentView.swift */; };
-		750105FE2C4836DD000EB40C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750105FD2C4836DD000EB40C /* Item.swift */; };
+		750105FE2C4836DD000EB40C /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750105FD2C4836DD000EB40C /* Word.swift */; };
 		750106002C4836DE000EB40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750105FF2C4836DE000EB40C /* Assets.xcassets */; };
 		750106032C4836DF000EB40C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750106022C4836DF000EB40C /* Preview Assets.xcassets */; };
+		7501060A2C483D41000EB40C /* words.json in Sources */ = {isa = PBXBuildFile; fileRef = 750106092C483D41000EB40C /* words.json */; };
+		7501060B2C484273000EB40C /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 750106092C483D41000EB40C /* words.json */; };
+		7501060D2C4856B5000EB40C /* LearnedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7501060C2C4856B5000EB40C /* LearnedWord.swift */; };
+		75C6E7262C4BBD180089667C /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75C6E7252C4BBD180089667C /* SwiftfulUI */; };
+		75C6E7282C4BE18C0089667C /* FlashCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E7272C4BE18C0089667C /* FlashCardClient.swift */; };
+		75C6E72A2C4BEDEA0089667C /* FlashCardDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */; };
+		75C6E72C2C4BF4630089667C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E72B2C4BF4630089667C /* Card.swift */; };
+		75C6E72E2C4BF48A0089667C /* SwipingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		750105F62C4836DD000EB40C /* FlashVocab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashVocab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		750105F92C4836DD000EB40C /* FlashVocabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashVocabApp.swift; sourceTree = "<group>"; };
 		750105FB2C4836DD000EB40C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		750105FD2C4836DD000EB40C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		750105FD2C4836DD000EB40C /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		750105FF2C4836DE000EB40C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		750106022C4836DF000EB40C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		750106092C483D41000EB40C /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		7501060C2C4856B5000EB40C /* LearnedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedWord.swift; sourceTree = "<group>"; };
+		75C6E7272C4BE18C0089667C /* FlashCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardClient.swift; sourceTree = "<group>"; };
+		75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardDataContainer.swift; sourceTree = "<group>"; };
+		75C6E72B2C4BF4630089667C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C6E7262C4BBD180089667C /* SwiftfulUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,9 +68,15 @@
 		750105F82C4836DD000EB40C /* FlashVocab */ = {
 			isa = PBXGroup;
 			children = (
+				75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */,
+				75C6E72F2C4BF6140089667C /* Model */,
+				750106092C483D41000EB40C /* words.json */,
 				750105F92C4836DD000EB40C /* FlashVocabApp.swift */,
+				7501060C2C4856B5000EB40C /* LearnedWord.swift */,
 				750105FB2C4836DD000EB40C /* ContentView.swift */,
-				750105FD2C4836DD000EB40C /* Item.swift */,
+				75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */,
+				75C6E72B2C4BF4630089667C /* Card.swift */,
+				75C6E7272C4BE18C0089667C /* FlashCardClient.swift */,
 				750105FF2C4836DE000EB40C /* Assets.xcassets */,
 				750106012C4836DF000EB40C /* Preview Content */,
 			);
@@ -68,6 +89,14 @@
 				750106022C4836DF000EB40C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		75C6E72F2C4BF6140089667C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				750105FD2C4836DD000EB40C /* Word.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +115,9 @@
 			dependencies = (
 			);
 			name = FlashVocab;
+			packageProductDependencies = (
+				75C6E7252C4BBD180089667C /* SwiftfulUI */,
+			);
 			productName = FlashVocab;
 			productReference = 750105F62C4836DD000EB40C /* FlashVocab.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 750105ED2C4836DD000EB40C;
+			packageReferences = (
+				75C6E7242C4BBD180089667C /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+			);
 			productRefGroup = 750105F72C4836DD000EB40C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7501060B2C484273000EB40C /* words.json in Resources */,
 				750106032C4836DF000EB40C /* Preview Assets.xcassets in Resources */,
 				750106002C4836DE000EB40C /* Assets.xcassets in Resources */,
 			);
@@ -140,9 +176,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C6E72E2C4BF48A0089667C /* SwipingIndicator.swift in Sources */,
 				750105FC2C4836DD000EB40C /* ContentView.swift in Sources */,
-				750105FE2C4836DD000EB40C /* Item.swift in Sources */,
+				7501060A2C483D41000EB40C /* words.json in Sources */,
+				750105FE2C4836DD000EB40C /* Word.swift in Sources */,
+				75C6E7282C4BE18C0089667C /* FlashCardClient.swift in Sources */,
+				7501060D2C4856B5000EB40C /* LearnedWord.swift in Sources */,
+				75C6E72A2C4BEDEA0089667C /* FlashCardDataContainer.swift in Sources */,
 				750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */,
+				75C6E72C2C4BF4630089667C /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +390,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		75C6E7242C4BBD180089667C /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		75C6E7252C4BBD180089667C /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75C6E7242C4BBD180089667C /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 750105EE2C4836DD000EB40C /* Project object */;
 }

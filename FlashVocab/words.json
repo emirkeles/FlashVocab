@@ -1,0 +1,38 @@
+    [
+        {
+            "index": 0,
+            "english": "apple",
+            "turkish": "elma",
+            "sentence": "I ate an apple",
+            "isKnown": false
+        },
+        {
+            "index": 1,
+            "english": "book",
+            "turkish": "kitap",
+            "sentence": "She read a book.",
+            "isKnown": false
+            
+        },
+        {
+            "index": 2,
+            "english": "car",
+            "turkish": "araba",
+            "sentence": "He drove a car.",
+            "isKnown": false
+        },
+        {
+            "index": 3,
+            "english": "dog",
+            "turkish": "kopek",
+            "sentence": "The dog is barking.",
+            "isKnown": false
+        },
+        {
+            "index": 4,
+            "english": "house",
+            "turkish": "ev",
+            "sentence": "They bought a new house.",
+            "isKnown": false
+        }
+    ]

@@ -7,55 +7,78 @@
 
 import SwiftUI
 import SwiftData
+import SwiftfulUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @Query(filter: #Predicate<Word>{ word in
+        word.index >= 0
+    }, sort: \Word.index)
+    private var items: [Word]
+    @State private var currentIndex = 0
+    @State private var currentSwipeOffset: CGFloat = .zero
+    @State private var cardOffsets: [String:Bool] = [:]
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack {
+            TabView {
+                ZStack {
+                    ForEach(Array(items.enumerated()), id: \.offset) { (index, word) in
+                        let isPrevious = (currentIndex - 1) == index
+                        let isCurrent = currentIndex == index
+                        let isNext = (currentIndex + 1) == index
+                        
+                        if isPrevious || isCurrent || isNext {
+                            let offsetValue = cardOffsets[word.english]
+                            cardView(word: word, index: index)
+                                .zIndex(Double(items.count - index))
+                                .offset(x: offsetValue == nil ? 0 : offsetValue == true ? 900 : -900)
+                            
+                        }
                     }
+                    OverlaySwipingIndicators(currentSwipeOffset: $currentSwipeOffset)
+                                    .zIndex(999999)
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                .animation(.smooth, value: cardOffsets)
+                .tabItem {
+                    Label("Menu", systemImage: "list.dash")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                Text("ayarlar")
+                    .tabItem { Label("Settings", systemImage: "gear") }
+                    .onAppear {
+                        for i in items {
+                            print("siliyom")
+                            modelContext.delete(i)
+                        }
                     }
-                }
             }
-        } detail: {
-            Text("Select an item")
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+    
+    private func userDidSelect(index: Int, isKnown: Bool) {
+        let word = items[index]
+        cardOffsets[word.english] = isKnown
+        currentIndex += 1
     }
 }
 
-#Preview {
+
+extension ContentView {
+    private func cardView(word: Word, index: Int) -> some View {
+        Card(word: word)
+            .withDragGesture(.horizontal, minimumDistance: 10, resets: true, rotationMultiplier: 1.05) { dragOffset in
+                currentSwipeOffset = dragOffset.width
+            } onEnded: { dragOffset in
+                if dragOffset.width < -50 {
+                    userDidSelect(index: index, isKnown: false)
+                } else if dragOffset.width > 50 {
+                    userDidSelect(index: index, isKnown: true)
+                }
+            }
+    }
+}
+
+#Preview(body: {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
-}
+        .flashCardDataContainer()
+})
