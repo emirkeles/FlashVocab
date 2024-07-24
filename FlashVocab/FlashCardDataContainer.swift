@@ -21,7 +21,6 @@ struct FlashCardDataContainerViewModifier: ViewModifier {
                     let existingWords = try container.mainContext.fetchCount(descriptor)
                     
                     guard existingWords == 0 else { return }
-                    print(Bundle.main.bundlePath.appending("/words.json"))
                     
                     guard let url = Bundle.main.url(forResource: "words", withExtension: "json") else {
                         fatalError("Failed to find users.json")
