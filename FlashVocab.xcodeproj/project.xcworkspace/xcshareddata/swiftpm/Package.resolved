@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "popupview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/PopupView.git",
+      "state" : {
+        "revision" : "21119b8dbb413e03b6036b788601e96806c83ed3",
+        "version" : "3.0.4"
+      }
+    },
+    {
       "identity" : "swiftfulrecursiveui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftfulThinking/SwiftfulRecursiveUI.git",
@@ -16,6 +25,15 @@
       "state" : {
         "revision" : "7e6e2d1c29d05e1519f2f5a2ce6012fe4e4dfa19",
         "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/swiftui-introspect",
+      "state" : {
+        "revision" : "807f73ce09a9b9723f12385e592b4e0aaebd3336",
+        "version" : "1.3.0"
       }
     }
   ],

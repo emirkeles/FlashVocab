@@ -6,83 +6,121 @@
 //
 
 import SwiftUI
+import PopupView
+
 
 struct Card: View {
-    @State private var expansionStage = 0
     @Namespace private var Namespace
+    @State private var show: Bool = false
+    @State private var isToggle = false
+    @State private var offsetSize: CGSize = .zero
+    @State private var showToast: Bool = false
+    
     var word: Word
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                .fill(.ultraThickMaterial)
-                .frame(width: 200, height: cardHeight)
-                .overlay(
-                    ZStack {
-                        VStack(spacing: 10) {
-                            Text(word.english)
-                                .matchedGeometryEffect(id: "word.english", in: Namespace)
-                                .foregroundStyle(.red)
-                                .font(.title)
-                            
-                            if expansionStage >= 1 {
-                                Text(word.sentence)
-                                    .matchedGeometryEffect(id: "word.sentence", in: Namespace)
-                                    .foregroundStyle(.blue)
-                                    .font(.callout)
-                                    .padding(.horizontal)
-                                    .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
-                            }
-                            
-                            if expansionStage == 2 {
-                                Text(word.turkish)
-                                    .matchedGeometryEffect(id: "word.turkish", in: Namespace)
-                                    .foregroundStyle(.green)
-                                    .font(.body)
-                                    .padding(.top, 5)
-                                    .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
-                            }
-                        }
-                        VStack {
-                            expandButton
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    }
-                )
-        }
-    }
-    
-    private var cardHeight: CGFloat {
-        switch expansionStage {
-        case 0: return 180
-        case 1: return 220
-        case 2: return 260
-        default: return 180
-        }
-    }
-    
-    private var expandButton: some View {
-        Button(action: {
-            withAnimation(.easeInOut) {
-                expansionStage = (expansionStage + 1) % 3
-            }
-        }) {
-            Image(systemName: "arrow.down.to.line")
-                .font(.title3)
-                .matchedGeometryEffect(id: "expandButton", in: Namespace)
-                .foregroundStyle(.red)
-                .rotationEffect(expansionStage == 2 ? .degrees(180) : .degrees(0))
-                .animation(.easeInOut(duration: 0.3), value: expansionStage)
+                .fill(.thickMaterial)
+                .frame(maxHeight: 500)
                 .padding()
+                .overlay(
+                    overlayView
+                )
+                .offset(x: offsetSize.width, y: offsetSize.height)
         }
+        .gesture(
+            DragGesture()
+                .onChanged{ offset in
+                    if offset.translation.height < -150 {
+                        if !show {
+                            withAnimation(.snappy(duration: 0.4)) {
+                                show.toggle()
+                            }
+                        }
+                    }
+                    if offset.translation.height > 150 {
+                        if !showToast {
+                            ToastManager.shared.showToast.toggle()
+                            showToast.toggle()
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                                showToast.toggle()
+                            }
+                        }
+                    }
+                }
+                .onEnded { offset in
+                    withAnimation {
+                        offsetSize = .zero
+                    }
+                    
+                }
+        )
     }
     
-    private var expansionButtonIcon: String {
-        switch expansionStage {
-        case 0, 1: return "arrow.down.to.line"
-        case 2: return "arrow.down.to.line"
-        default: return "arrow.down.to.line"
-        }
+    @ViewBuilder
+    private var overlayView: some View {
+        VStack(spacing: 40) {
+                    Text(word.english)
+                        .matchedGeometryEffect(id: "word.english", in: Namespace)
+                        .foregroundStyle(.primary)
+                        .font(.largeTitle)
+                        .padding(.top, show ? 40 : 0)
+            
+                    
+                    if show {
+                        VStack(spacing: 20) {
+                            Text(word.sentence)
+                                .font(.callout)
+                                .padding(.horizontal)
+                                
+                            Text("a written or printed work consisting of pages glued or sewn together along one side and bound in covers.")
+                                .font(.headline)
+                                .padding(.top, 5)
+                                .padding(.horizontal, 20)
+                            Text(word.turkish)
+                                .font(.body)
+                                .padding(.top, 5)
+                        }
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
+                    }
+                }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: show ? .top : .center)
+            }
+    
+    private var firstView: some View {
+            VStack(spacing: 10) {
+                Text(word.english)
+                    .matchedGeometryEffect(id: "word.english", in: Namespace)
+                    .foregroundStyle(.primary)
+                    .font(.largeTitle)
+            }
+            .padding(.top, 20)
+    }
+    private var secondView: some View {
+            VStack(spacing: 10) {
+                Text(word.english)
+                    .matchedGeometryEffect(id: "word.english", in: Namespace)
+                    .foregroundStyle(.primary)
+                    .font(.largeTitle)
+                VStack {
+                    Text(word.sentence)
+                        .font(.callout)
+                        .padding(.horizontal)
+                        .animation(.easeOut(duration: 0.5), value: show)
+                    Text("a written or printed work consisting of pages glued or sewn together along one side and bound in covers.")
+                        .font(.headline)
+                        .padding(.top, 5)
+                        .padding(.horizontal, 20)
+                    Text(word.turkish)
+                        .font(.body)
+                        .padding(.top, 5)
+                }
+                .transition(.slide)
+            }
+            
+            .offset(y: show ? 0 : 400)
+        .padding(.top, 40)
     }
 }
-
