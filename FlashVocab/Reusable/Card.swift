@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import PopupView
-
 
 struct Card: View {
     @Namespace private var Namespace
@@ -15,47 +13,71 @@ struct Card: View {
     @State private var isToggle = false
     @State private var offsetSize: CGSize = .zero
     @State private var showToast: Bool = false
-    
+    @State private var favorite = false
+    @State private var size: CGSize = .zero
     var word: Word
+    
+    private func haptic() {
+        let impact = UIImpactFeedbackGenerator(style: .medium)
+        impact.impactOccurred()
+    }
+    
+    private func toggleFavorite() {
+        haptic()
+        withAnimation(.snappy(duration: 0.4)) {
+            show.toggle()
+        }
+    }
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0, style: .continuous)
                 .fill(.thickMaterial)
-                .frame(maxHeight: 500)
+                .frame(maxHeight: 540)
                 .padding()
                 .overlay(
                     overlayView
                 )
+                .overlay(alignment: .bottom) {
+                    HStack(spacing: 20) {
+                        Button(action: toggleToast) {
+                            Image(systemName: favorite ? "bookmark.circle.fill" : "bookmark.circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                        .padding()
+                        .tint(.orange)
+                        Button(action: toggleFavorite) {
+                            Image(systemName: show ? "info.circle.fill" : "info.circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                        .padding()
+                        .tint(.gray.opacity(0.8))
+                                        }
+                    .padding(.bottom, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
                 .offset(x: offsetSize.width, y: offsetSize.height)
         }
-        .gesture(
-            DragGesture()
-                .onChanged{ offset in
-                    if offset.translation.height < -150 {
-                        if !show {
-                            withAnimation(.snappy(duration: 0.4)) {
-                                show.toggle()
-                            }
-                        }
-                    }
-                    if offset.translation.height > 150 {
-                        if !showToast {
-                            ToastManager.shared.showToast.toggle()
-                            showToast.toggle()
-                            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-                                showToast.toggle()
-                            }
-                        }
-                    }
-                }
-                .onEnded { offset in
-                    withAnimation {
-                        offsetSize = .zero
-                    }
-                    
-                }
-        )
+    }
+    
+    private func toggleToast() {
+        haptic()
+        if !showToast {
+            if favorite {
+                ToastManager.shared.showToast(icon: "bookmark.slash.fill", title: "Yer İşaretlerinden Çıkartıldı")
+                favorite.toggle()
+                showToast.toggle()
+            } else {
+                ToastManager.shared.showToast(icon: "bookmark.fill", title: "Yer İşaretlerine Eklendi")
+                favorite.toggle()
+                showToast.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                showToast.toggle()
+            }
+        }
     }
     
     @ViewBuilder
@@ -66,8 +88,9 @@ struct Card: View {
                         .foregroundStyle(.primary)
                         .font(.largeTitle)
                         .padding(.top, show ? 40 : 0)
+                        .offset(y: show ? 0 : -80)
             
-                    
+            
                     if show {
                         VStack(spacing: 20) {
                             Text(word.sentence)
@@ -86,6 +109,7 @@ struct Card: View {
                         .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
                     }
                 }
+        
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: show ? .top : .center)
             }
     
