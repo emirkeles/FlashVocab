@@ -43,7 +43,8 @@ struct FlashCardsView: View {
                 .frame(width: 350, height: 450)
             }
         }
-        .navigationTitle("KARTLAR")
+        .navigationTitle("FlashVocab")
+        .navigationBarTitleDisplayMode(.inline)
         .animation(.smooth, value: cardOffsets)
         
     }
