@@ -13,6 +13,15 @@ class ToastManager {
     private init() {}
     
     var showToast = false
+    var toastIcon: String = "star.fill"
+    var toastTitle: String = "Yer işaretine eklendi"
+    var color: Color = .orange
+    
+    func showToast(icon: String, title: String) {
+            self.toastIcon = icon
+            self.toastTitle = title
+            self.showToast = true
+        }
     
     static let shared = ToastManager()
 }
@@ -25,81 +34,46 @@ struct FlashVocabApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modifier(ToastViewModifier(isPresented: $toastManager.showToast))
-            //                .popup(isPresented: $toastManager.showToast, view: {
-            //                    HStack {
-            //                        Image(systemName: "square.and.arrow.up")
-            //                                    .frame(width: 48, height: 48)
-            //                                    .cornerRadius(24)
-            //                                
-            //                                VStack(alignment: .leading) {
-            //                                    HStack {
-            //                                        Text("Camila Morrone")
-            //                                            .font(.system(size: 15))
-            //                                        
-            //                                        Spacer()
-            //                                        
-            //                                        Text("now")
-            //                                            .font(.system(size: 13))
-            //                                            .opacity(0.6)
-            //                                    }
-            //                                    
-            //                                    Text("Let's go have a cup of coffee! ☕️")
-            //                                        .font(.system(size: 15, weight: .light))
-            //                                }
-            //                            }
-            //                            .foregroundColor(.white)
-            //                            .padding(EdgeInsets(top: 56, leading: 16, bottom: 16, trailing: 16))
-            //                            .frame(maxWidth: .infinity)
-            //                            .background(.thinMaterial)
-            //                }, customize: {
-            //                    $0
-            //                        .type(.toast)
-            //                        .position(.top)
-            //                        .animation(.spring)
-            //                        .autohideIn(2)
-            //                })
-            //                
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        showToast.toggle()
-                    }
-                    
-                }
+                .modifier(ToastViewModifier(isPresented: $toastManager.showToast, icon: $toastManager.toastIcon, title: $toastManager.toastTitle, color: toastManager.color))
                 .flashCardDataContainer()
         }
     }
 }
 
-
-
 struct ToastViewModifier: ViewModifier {
     @Binding var isPresented: Bool
+    @Binding var icon: String
+    @Binding var title: String
+    var color: Color
     
     func body(content: Content) -> some View {
         content
             .popup(isPresented: $isPresented, view: {
                 ZStack {
                     HStack {
-                        Image(systemName: "star.fill")
+                        Image(systemName: icon)
                             .resizable()
                             .frame(width: 36, height: 36)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text("Favorilere Eklendi")
+                    Text(title)
                         .font(.system(size: 18))
                 }
                 .foregroundColor(.white)
                 .padding(EdgeInsets(top: 56, leading: 16, bottom: 16, trailing: 16))
                 .frame(maxWidth: .infinity)
-                .background(Color.orange.gradient)
+                .background(color.gradient)
             }, customize: {
                 $0
                     .type(.toast)
                     .position(.top)
                     .animation(.spring)
-                    .autohideIn(2)
+                    .autohideIn(0.8)
             })
     }
+}
+
+#Preview{
+    ContentView()
 }
