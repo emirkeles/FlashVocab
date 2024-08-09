@@ -14,7 +14,7 @@ struct FlashCardDataContainerViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .modelContainer(for: Word.self) { result in
+            .modelContainer(for: [Word.self, Quiz.self, QuizQuestion.self, AppState.self]) { result in
                 do {
                     let container = try result.get()
                     let descriptor = FetchDescriptor<Word>()
