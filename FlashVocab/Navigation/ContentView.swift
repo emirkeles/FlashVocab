@@ -7,9 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import SwiftfulUI
-
-
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -20,15 +17,20 @@ struct ContentView: View {
         
         TabView {
             NavigationStack {
-                FlashCardsView()
+                MainView()
             }
-            .tabItem {
-                Label("Menu", systemImage: "list.dash")
-            }
+            .tabItem { Label("Menu", systemImage: "list.dash") }
+            
             NavigationStack {
                 ProfileView()
             }
             .tabItem { Label("Profil", systemImage: "person.circle") }
+            
+            NavigationStack {
+                QuizListView()
+            }
+            .tabItem { Label("Geçmiş Quiz'ler", systemImage: "list.bullet") }
+            
             NavigationStack {
                 SettingsView()
             }
@@ -36,8 +38,3 @@ struct ContentView: View {
         }
     }
 }
-
-
-
-
-
