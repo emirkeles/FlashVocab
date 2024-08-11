@@ -15,6 +15,7 @@
 		7501060A2C483D41000EB40C /* words.json in Sources */ = {isa = PBXBuildFile; fileRef = 750106092C483D41000EB40C /* words.json */; };
 		7501060B2C484273000EB40C /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 750106092C483D41000EB40C /* words.json */; };
 		7501060D2C4856B5000EB40C /* LearnedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7501060C2C4856B5000EB40C /* LearnedWord.swift */; };
+		751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751D22012C696D8F0070F0F0 /* HapticManager.swift */; };
 		754242C02C55486A00086A30 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 754242BF2C55486A00086A30 /* PopupView */; };
 		756226A02C64BAD800B68E61 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */; };
 		756226A32C64BB0500B68E61 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756226A22C64BB0500B68E61 /* ToastManager.swift */; };
@@ -45,6 +46,7 @@
 		750106022C4836DF000EB40C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		750106092C483D41000EB40C /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		7501060C2C4856B5000EB40C /* LearnedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedWord.swift; sourceTree = "<group>"; };
+		751D22012C696D8F0070F0F0 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		756226A22C64BB0500B68E61 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		756226A42C64DE2600B68E61 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		750105ED2C4836DD000EB40C = {
 			isa = PBXGroup;
 			children = (
+				751D22012C696D8F0070F0F0 /* HapticManager.swift */,
 				750105F82C4836DD000EB40C /* FlashVocab */,
 				750105F72C4836DD000EB40C /* Products */,
 			);
@@ -276,6 +279,7 @@
 				75E23E1B2C66D8B400E886C7 /* QuizRowView.swift in Sources */,
 				75E23E1D2C66D8F800E886C7 /* QuizDetailView.swift in Sources */,
 				750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */,
+				751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */,
 				75E23E212C66D9B300E886C7 /* AppState.swift in Sources */,
 				75E23E142C66BC5500E886C7 /* QuizView.swift in Sources */,
 				756ACF3A2C52053500D3BFCD /* ProfileView.swift in Sources */,

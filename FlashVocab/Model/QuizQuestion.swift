@@ -13,33 +13,35 @@ final class QuizQuestion: Identifiable {
     let id: UUID
     var word: Word
     var correctAnswer: String
-    var incorrectAnswer: String
-    var isCorrectOnRight: Bool
-    var userAnsweredRight: Bool?
-    var isCorrect: Bool?
+    var incorrectAnswers: [String]
+    var selectedAnswer: String?
     @Relationship(inverse: \Quiz.questions) var quiz: Quiz?
     
-    init(word: Word, incorrectAnswer: String, quiz: Quiz? = nil) {
+    init(word: Word, incorrectAnswers: [String], quiz: Quiz? = nil) {
         self.id = UUID()
         self.word = word
         self.correctAnswer = word.turkish
-        self.incorrectAnswer = incorrectAnswer
-        self.isCorrectOnRight = Bool.random()
+        self.incorrectAnswers = incorrectAnswers
         self.quiz = quiz
     }
     
-    var leftAnswer: String {
-        isCorrectOnRight ? incorrectAnswer : correctAnswer
+    
+    var allAnswers: [String] {
+        return ([correctAnswer] + incorrectAnswers).shuffled()
     }
     
-    var rightAnswer: String {
-        isCorrectOnRight ? correctAnswer : incorrectAnswer
+    var isAnswered: Bool {
+        return selectedAnswer != nil
     }
-}
-
-extension QuizQuestion {
-    func checkAnswer(selectedRight: Bool) {
-        self.userAnsweredRight = selectedRight
-        self.isCorrect = (selectedRight == isCorrectOnRight)
+    
+    var isCorrect: Bool {
+        guard let selectedAnswer = selectedAnswer else {
+            return false
+        }
+        return selectedAnswer == correctAnswer
+    }
+    
+    func checkAnswer(selected: String) {
+        self.selectedAnswer = selected
     }
 }

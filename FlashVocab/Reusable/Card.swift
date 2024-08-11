@@ -16,13 +16,8 @@ struct Card: View {
     @State private var size: CGSize = .zero
     var word: Word
     
-    private func haptic() {
-        let impact = UIImpactFeedbackGenerator(style: .medium)
-        impact.impactOccurred()
-    }
-    
     private func toggleFavorite() {
-        haptic()
+        HapticFeedbackManager.shared.playImpact(style: .medium)
         withAnimation(.snappy(duration: 0.4)) {
             show.toggle()
         }
@@ -62,7 +57,7 @@ struct Card: View {
     }
     
     private func toggleToast() {
-        haptic()
+        HapticFeedbackManager.shared.playImpact(style: .medium)
         if !showToast {
             if favorite {
                 ToastManager.shared.showToast(icon: "bookmark.slash.fill", title: "Yer İşaretlerinden Çıkartıldı")
