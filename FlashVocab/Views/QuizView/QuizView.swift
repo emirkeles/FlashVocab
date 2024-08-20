@@ -113,7 +113,7 @@ struct QuizView: View {
                     }
                     if quiz?.isCompleted == true {
                         showResult = true
-                        HapticFeedbackManager.shared.playNotification(type: .success)
+                        HapticFeedbackManager.shared.playImpact(style: .medium)
                     }
                 }
             } label: {

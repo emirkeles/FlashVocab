@@ -149,9 +149,7 @@ struct IsKnownView: View {
     
     private func wordRow(_ word: Word, isKnown: Bool) -> some View {
         HStack {
-            Text("\(word.index)")
             Text(word.english)
-            
                 .id(word.id)
                 .transition(.asymmetric(insertion: .scale.combined(with: .opacity),
                                         removal: .scale.combined(with: .opacity)))

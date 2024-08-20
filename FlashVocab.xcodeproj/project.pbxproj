@@ -82,7 +82,6 @@
 		750105ED2C4836DD000EB40C = {
 			isa = PBXGroup;
 			children = (
-				751D22012C696D8F0070F0F0 /* HapticManager.swift */,
 				750105F82C4836DD000EB40C /* FlashVocab */,
 				750105F72C4836DD000EB40C /* Products */,
 			);
@@ -99,15 +98,14 @@
 		750105F82C4836DD000EB40C /* FlashVocab */ = {
 			isa = PBXGroup;
 			children = (
-				756226A12C64BAFC00B68E61 /* Managers */,
+				753D34332C751C7300719773 /* App */,
+				753D34342C751C8B00719773 /* Views */,
 				7562269E2C64BACD00B68E61 /* ViewModifiers */,
-				750105F92C4836DD000EB40C /* FlashVocabApp.swift */,
-				756A85F52C50AE0D0054DE9B /* Reusable */,
-				756A85EF2C50AD0A0054DE9B /* Navigation */,
-				75C6E72F2C4BF6140089667C /* Model */,
-				75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */,
-				750105FF2C4836DE000EB40C /* Assets.xcassets */,
-				750106092C483D41000EB40C /* words.json */,
+				75C6E72F2C4BF6140089667C /* Models */,
+				756226A12C64BAFC00B68E61 /* Managers */,
+				753D34382C751D5600719773 /* Services */,
+				753D34372C751D1500719773 /* Utilities */,
+				753D34362C751D0400719773 /* Resources */,
 				750106012C4836DF000EB40C /* Preview Content */,
 			);
 			path = FlashVocab;
@@ -121,6 +119,65 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		753D34332C751C7300719773 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				750105F92C4836DD000EB40C /* FlashVocabApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		753D34342C751C8B00719773 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				753D34352C751CB600719773 /* QuizView */,
+				75C6E72B2C4BF4630089667C /* Card.swift */,
+				75E23E1E2C66D92000E886C7 /* MainView.swift */,
+				750105FB2C4836DD000EB40C /* ContentView.swift */,
+				75E23E152C66D86400E886C7 /* LearningProgressView.swift */,
+				756A85F22C50AD430054DE9B /* FlashCardsView.swift */,
+				756ACF392C52053500D3BFCD /* ProfileView.swift */,
+				756A85F02C50AD1E0054DE9B /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		753D34352C751CB600719773 /* QuizView */ = {
+			isa = PBXGroup;
+			children = (
+				75E23E132C66BC5500E886C7 /* QuizView.swift */,
+				75E23E1A2C66D8B400E886C7 /* QuizRowView.swift */,
+				75E23E1C2C66D8F800E886C7 /* QuizDetailView.swift */,
+				75E23E182C66D89900E886C7 /* QuizListView.swift */,
+			);
+			path = QuizView;
+			sourceTree = "<group>";
+		};
+		753D34362C751D0400719773 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				750105FF2C4836DE000EB40C /* Assets.xcassets */,
+				750106092C483D41000EB40C /* words.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		753D34372C751D1500719773 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		753D34382C751D5600719773 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		7562269E2C64BACD00B68E61 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,55 +189,22 @@
 		756226A12C64BAFC00B68E61 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				751D22012C696D8F0070F0F0 /* HapticManager.swift */,
 				756226A22C64BB0500B68E61 /* ToastManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		756A85EF2C50AD0A0054DE9B /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				750105FB2C4836DD000EB40C /* ContentView.swift */,
-				75E23E152C66D86400E886C7 /* LearningProgressView.swift */,
-				756ACF392C52053500D3BFCD /* ProfileView.swift */,
-				756A85F02C50AD1E0054DE9B /* SettingsView.swift */,
-				75E23E1E2C66D92000E886C7 /* MainView.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		756A85F52C50AE0D0054DE9B /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				75E23E172C66D89200E886C7 /* Quiz */,
-				75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */,
-				75C6E72B2C4BF4630089667C /* Card.swift */,
-				756A85F22C50AD430054DE9B /* FlashCardsView.swift */,
-			);
-			path = Reusable;
-			sourceTree = "<group>";
-		};
-		75C6E72F2C4BF6140089667C /* Model */ = {
+		75C6E72F2C4BF6140089667C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				7501060C2C4856B5000EB40C /* LearnedWord.swift */,
 				750105FD2C4836DD000EB40C /* Word.swift */,
 				75E23E202C66D9B300E886C7 /* AppState.swift */,
 				756226A42C64DE2600B68E61 /* Quiz.swift */,
-				75E23E132C66BC5500E886C7 /* QuizView.swift */,
 				756226A62C64DE4000B68E61 /* QuizQuestion.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		75E23E172C66D89200E886C7 /* Quiz */ = {
-			isa = PBXGroup;
-			children = (
-				75E23E182C66D89900E886C7 /* QuizListView.swift */,
-				75E23E1A2C66D8B400E886C7 /* QuizRowView.swift */,
-				75E23E1C2C66D8F800E886C7 /* QuizDetailView.swift */,
-			);
-			path = Quiz;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

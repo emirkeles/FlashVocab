@@ -15,7 +15,8 @@ final class QuizQuestion: Identifiable {
     var correctAnswer: String
     var incorrectAnswers: [String]
     var selectedAnswer: String?
-    @Relationship(inverse: \Quiz.questions) var quiz: Quiz?
+    @Relationship(inverse: \Quiz.questions) 
+    var quiz: Quiz?
     
     init(word: Word, incorrectAnswers: [String], quiz: Quiz? = nil) {
         self.id = UUID()
