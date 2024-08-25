@@ -549,5 +549,337 @@
         "englishMeanings": [
             "A young human being below the age of puberty or below the legal age of majority"
         ]
-    }
+    },
+    {
+            "index": 50,
+            "english": "accomplish",
+            "phonetic": "/əˈkʌmplɪʃ/",
+            "turkish": "başarmak",
+            "sentence": "With hard work, you can accomplish your goals.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To succeed in doing or completing something"
+            ]
+        },
+        {
+            "index": 51,
+            "english": "recommend",
+            "phonetic": "/ˌrekəˈmend/",
+            "turkish": "tavsiye etmek",
+            "sentence": "Can you recommend a good restaurant in this area?",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To suggest that someone or something would be good or suitable for a particular job or purpose"
+            ]
+        },
+        {
+            "index": 52,
+            "english": "improve",
+            "phonetic": "/ɪmˈpruːv/",
+            "turkish": "geliştirmek",
+            "sentence": "Regular exercise can improve your overall health.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To make or become better"
+            ]
+        },
+        {
+            "index": 53,
+            "english": "consider",
+            "phonetic": "/kənˈsɪdər/",
+            "turkish": "düşünmek, değerlendirmek",
+            "sentence": "We need to consider all options before making a decision.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To think carefully about something, typically before making a decision"
+            ]
+        },
+        {
+            "index": 54,
+            "english": "maintain",
+            "phonetic": "/meɪnˈteɪn/",
+            "turkish": "sürdürmek, korumak",
+            "sentence": "It's important to maintain a healthy diet and exercise routine.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To keep in existence or continuance; preserve"
+            ]
+        },
+        {
+            "index": 55,
+            "english": "achieve",
+            "phonetic": "/əˈtʃiːv/",
+            "turkish": "elde etmek, başarmak",
+            "sentence": "With dedication, you can achieve great things in life.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To successfully bring about or reach (a desired objective or result) by effort, skill, or courage"
+            ]
+        },
+        {
+            "index": 56,
+            "english": "reduce",
+            "phonetic": "/rɪˈdjuːs/",
+            "turkish": "azaltmak",
+            "sentence": "We need to reduce our energy consumption to help the environment.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To make smaller or less in amount, degree, or size"
+            ]
+        },
+        {
+            "index": 57,
+            "english": "involve",
+            "phonetic": "/ɪnˈvɒlv/",
+            "turkish": "dahil etmek, içermek",
+            "sentence": "The project will involve several departments working together.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To include or contain as a necessary part or result"
+            ]
+        },
+        {
+            "index": 58,
+            "english": "expand",
+            "phonetic": "/ɪkˈspænd/",
+            "turkish": "genişlemek, genişletmek",
+            "sentence": "The company plans to expand its operations to other countries.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To become or make larger or more extensive"
+            ]
+        },
+        {
+            "index": 59,
+            "english": "contribute",
+            "phonetic": "/kənˈtrɪbjuːt/",
+            "turkish": "katkıda bulunmak",
+            "sentence": "Everyone should contribute to keeping the environment clean.",
+            "partOfSpeech": "v.",
+            "englishMeanings": [
+                "To give or add something to help a cause or provide support"
+            ]
+        },
+        {
+            "index": 60,
+            "english": "effectively",
+            "phonetic": "/ɪˈfektɪvli/",
+            "turkish": "etkili bir şekilde",
+            "sentence": "The new system works effectively to reduce waiting times.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "In a way that produces the intended result"
+            ]
+        },
+        {
+            "index": 61,
+            "english": "gradually",
+            "phonetic": "/ˈɡrædʒuəli/",
+            "turkish": "yavaş yavaş, aşamalı olarak",
+            "sentence": "The temperature gradually increased throughout the day.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "In a gradual way; slowly and steadily"
+            ]
+        },
+        {
+            "index": 62,
+            "english": "occasionally",
+            "phonetic": "/əˈkeɪʒnəli/",
+            "turkish": "ara sıra, bazen",
+            "sentence": "We occasionally go out for dinner on weekends.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "At infrequent or irregular intervals; now and then"
+            ]
+        },
+        {
+            "index": 63,
+            "english": "relatively",
+            "phonetic": "/ˈrelətɪvli/",
+            "turkish": "nispeten, göreceli olarak",
+            "sentence": "The test was relatively easy compared to last year's exam.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "In relation or comparison to something else"
+            ]
+        },
+        {
+            "index": 64,
+            "english": "particularly",
+            "phonetic": "/pərˈtɪkjələrli/",
+            "turkish": "özellikle, bilhassa",
+            "sentence": "I'm particularly interested in ancient history.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "To a higher degree than is usual or average; especially"
+            ]
+        },
+        {
+            "index": 65,
+            "english": "approximately",
+            "phonetic": "/əˈprɒksɪmətli/",
+            "turkish": "yaklaşık olarak",
+            "sentence": "The journey takes approximately two hours by car.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "Used to show that something is almost, but not completely, accurate or exact"
+            ]
+        },
+        {
+            "index": 66,
+            "english": "essentially",
+            "phonetic": "/ɪˈsenʃəli/",
+            "turkish": "esasen, özünde",
+            "sentence": "The two proposals are essentially the same.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "In the most important respects; fundamentally"
+            ]
+        },
+        {
+            "index": 67,
+            "english": "necessarily",
+            "phonetic": "/ˈnesəsərəli/",
+            "turkish": "zorunlu olarak, mecburen",
+            "sentence": "A high price doesn't necessarily mean high quality.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "As a necessary result; inevitably"
+            ]
+        },
+        {
+            "index": 68,
+            "english": "primarily",
+            "phonetic": "/praɪˈmerəli/",
+            "turkish": "öncelikle, başlıca",
+            "sentence": "The website is primarily designed for educational purposes.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "For the most part; mainly"
+            ]
+        },
+        {
+            "index": 69,
+            "english": "significantly",
+            "phonetic": "/sɪɡˈnɪfɪkəntli/",
+            "turkish": "önemli ölçüde",
+            "sentence": "Regular exercise can significantly improve your health.",
+            "partOfSpeech": "adv.",
+            "englishMeanings": [
+                "In a sufficiently great or important way as to be worthy of attention"
+            ]
+        },
+        {
+            "index": 70,
+            "english": "crucial",
+            "phonetic": "/ˈkruːʃəl/",
+            "turkish": "çok önemli, hayati",
+            "sentence": "Communication is crucial for the success of any team project.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Decisive or critical, especially in the success or failure of something"
+            ]
+        },
+        {
+            "index": 71,
+            "english": "valuable",
+            "phonetic": "/ˈvæljuəbl/",
+            "turkish": "değerli",
+            "sentence": "Experience is a valuable asset in many job markets.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Worth a great deal of money",
+                "Extremely useful or important"
+            ]
+        },
+        {
+            "index": 72,
+            "english": "global",
+            "phonetic": "/ˈɡləʊbl/",
+            "turkish": "küresel, global",
+            "sentence": "Climate change is a global issue that affects everyone.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Relating to the whole world; worldwide"
+            ]
+        },
+        {
+            "index": 73,
+            "english": "diverse",
+            "phonetic": "/daɪˈvɜːs/",
+            "turkish": "çeşitli, farklı",
+            "sentence": "Our company values having a diverse workforce.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Showing a great deal of variety; very different"
+            ]
+        },
+        {
+            "index": 74,
+            "english": "innovative",
+            "phonetic": "/ˈɪnəveɪtɪv/",
+            "turkish": "yenilikçi",
+            "sentence": "The company is known for its innovative approach to problem-solving.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Featuring new methods; advanced and original"
+            ]
+        },
+        {
+            "index": 75,
+            "english": "sustainable",
+            "phonetic": "/səˈsteɪnəbl/",
+            "turkish": "sürdürülebilir",
+            "sentence": "We need to find more sustainable ways of producing energy.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Able to be maintained at a certain rate or level",
+                "Causing little or no damage to the environment and therefore able to continue for a long time"
+            ]
+        },
+        {
+            "index": 76,
+            "english": "efficient",
+            "phonetic": "/ɪˈfɪʃnt/",
+            "turkish": "verimli",
+            "sentence": "The new production line is much more efficient than the old one.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Achieving maximum productivity with minimum wasted effort or expense"
+            ]
+        },
+        {
+            "index": 77,
+            "english": "flexible",
+            "phonetic": "/ˈfleksəbl/",
+            "turkish": "esnek",
+            "sentence": "Having flexible working hours can improve work-life balance.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Able to be easily modified to respond to altered circumstances or conditions"
+            ]
+        },
+        {
+            "index": 78,
+            "english": "comprehensive",
+            "phonetic": "/ˌkɒmprɪˈhensɪv/",
+            "turkish": "kapsamlı",
+            "sentence": "The report provides a comprehensive analysis of the current market trends.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Including or dealing with all or nearly all elements or aspects of something"
+            ]
+        },
+        {
+            "index": 79,
+            "english": "essential",
+            "phonetic": "/ɪˈsenʃl/",
+            "turkish": "temel, esas",
+            "sentence": "Water is essential for all forms of life.",
+            "partOfSpeech": "adj.",
+            "englishMeanings": [
+                "Absolutely necessary; extremely important"
+            ]
+        }
 ]
