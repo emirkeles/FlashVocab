@@ -85,7 +85,7 @@ struct FlashCardsView: View {
                    cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
                    currentSwipeOffset = 0
                }
-               
+               HapticFeedbackManager.shared.playImpact()
                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                    userDidSelect(index: index, isKnown: isKnown)
                }
