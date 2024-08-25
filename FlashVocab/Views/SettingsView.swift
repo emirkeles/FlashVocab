@@ -15,25 +15,24 @@ struct SettingsView: View {
     @Query private var questions: [QuizQuestion]
     @Environment(\.modelContext) private var modelContext
     var body: some View {
-        Text("ayarlar")
-        
-            .onAppear {
-                for item in items {
-                    print("siliyom")
-                    modelContext.delete(item)
-                }
-                
-                for appstate in appstates {
-                    modelContext.delete(appstate)
-                }
-                
-                for question in questions {
-                    modelContext.delete(question)
-                }
-                
-                for quiz in quizs {
-                    modelContext.delete(quiz)
-                }
+        Button("Bütün Verileri Sil", role: .destructive) {
+            for item in items {
+                print("siliyom")
+                modelContext.delete(item)
             }
+            
+            for appstate in appstates {
+                modelContext.delete(appstate)
+            }
+            
+            for question in questions {
+                modelContext.delete(question)
+            }
+            
+            for quiz in quizs {
+                modelContext.delete(quiz)
+            }
+        }
+        .buttonStyle(.borderedProminent)
     }
 }

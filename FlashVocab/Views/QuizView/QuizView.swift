@@ -51,9 +51,13 @@ struct QuizView: View {
     
     private var noQuizAvailableView: some View {
         VStack {
-            Text("Yeterli bilinmeyen kelime yok.")
+            Text("Yeterli bilinmeyen kelime yok!")
                 .font(.title)
                 .multilineTextAlignment(.center)
+            Text("En az 10 adet bilinmeyen kelime gerekli.")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.top)
             Text("Daha fazla kelime öğrenin ve tekrar deneyin.")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
