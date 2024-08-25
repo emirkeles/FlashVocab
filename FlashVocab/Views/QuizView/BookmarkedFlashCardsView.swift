@@ -37,12 +37,12 @@ struct BookmarkedFlashCardsView: View {
                     .zIndex(.infinity)
             } else {
                 GroupBox {
-                    ContentUnavailableView("No more bookmarked cards", systemImage: "bookmark.slash")
+                    ContentUnavailableView("Hiç yer işaretli kart bulunamadı.", systemImage: "bookmark.slash", description: Text("Yer işaretlerine kelime ekle."))
                 }
-                .frame(width: 350, height: 450)
+                .padding()
             }
         }
-        .navigationTitle("Bookmarked Cards")
+        .navigationTitle("Yer İşaretli Kartlarım")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .animation(.smooth, value: cardOffsets)

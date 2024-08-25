@@ -16,7 +16,18 @@ struct QuizListView: View {
     @State private var selectedQuiz: Quiz?
     
     var body: some View {
-            List(quizzes) { quiz in
+        Group {
+            if quizzes.isEmpty {
+                emptyStateView
+            } else {
+                quizListContent
+            }
+        }
+        .navigationTitle("Kayıtlı Quiz'ler")
+    }
+    private var quizListContent: some View {
+        List {
+            ForEach(quizzes) { quiz in
                 QuizRowView(quiz: quiz)
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
@@ -25,11 +36,15 @@ struct QuizListView: View {
                         selectedQuiz = quiz
                     }
             }
-            .listStyle(.plain)
-            .navigationTitle("Kayıtlı Quiz'ler")
-            
-            .sheet(item: $selectedQuiz) { quiz in
-                QuizDetailView(quiz: quiz)
-            }
+        }
+        .listStyle(.plain)
+        .sheet(item: $selectedQuiz, content: QuizDetailView.init)
+    }
+    
+    private var emptyStateView: some View {
+        GroupBox {
+            ContentUnavailableView("Geçmiş Quiz Bulunamadı", systemImage: "book.fill")
+        }
+        .padding()
     }
 }

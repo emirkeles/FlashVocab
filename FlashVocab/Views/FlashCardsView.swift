@@ -40,7 +40,7 @@ struct FlashCardsView: View {
                     .zIndex(.infinity)
             } else {
                 GroupBox {
-                    ContentUnavailableView("No more cards to show", systemImage: "figure.wave")
+                    ContentUnavailableView("Gösterilecek kart kalmadı!", systemImage: "figure.wave")
                 }
                 .frame(width: 350, height: 450)
             }
@@ -95,21 +95,6 @@ struct FlashCardsView: View {
                }
            }
        }
-    
-//    private func handleSwipe(dragOffset: CGSize, for index: Int) {
-//        if abs(dragOffset.width) > 100 {
-//            let isKnown = dragOffset.width > 0
-//            userDidSelect(index: index, isKnown: isKnown)
-//            
-//            withAnimation(.spring(duration: 0.3)) {
-//                cardOffsets[items[index].english] = isKnown == true ? 300 : -300
-//            }
-//        } else {
-//            withAnimation(.spring(duration: 0.3)) {
-//                cardOffsets[items[index].english] = 0
-//            }
-//        }
-//    }
     
     private func userDidSelect(index: Int, isKnown: Bool) {
         let word = items[index]

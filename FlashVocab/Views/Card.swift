@@ -35,7 +35,7 @@ struct Card: View {
     }
     
     private var cardContent: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 20) {
             wordHeader
             if show {
                 wordDetails

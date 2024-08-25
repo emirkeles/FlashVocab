@@ -37,6 +37,7 @@
 		758146712C7B2823007AF1A7 /* BookmarkedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */; };
 		758146732C7B285A007AF1A7 /* IsKnownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146722C7B285A007AF1A7 /* IsKnownView.swift */; };
 		758146752C7B3E7B007AF1A7 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146742C7B3E7B007AF1A7 /* StreakManager.swift */; };
+		758146772C7B54F9007AF1A7 /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146762C7B54F9007AF1A7 /* WordCard.swift */; };
 		75C6E7262C4BBD180089667C /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75C6E7252C4BBD180089667C /* SwiftfulUI */; };
 		75C6E72A2C4BEDEA0089667C /* FlashCardDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */; };
 		75C6E72C2C4BF4630089667C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E72B2C4BF4630089667C /* Card.swift */; };
@@ -81,6 +82,7 @@
 		758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedWordsView.swift; sourceTree = "<group>"; };
 		758146722C7B285A007AF1A7 /* IsKnownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKnownView.swift; sourceTree = "<group>"; };
 		758146742C7B3E7B007AF1A7 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		758146762C7B54F9007AF1A7 /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
 		75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardDataContainer.swift; sourceTree = "<group>"; };
 		75C6E72B2C4BF4630089667C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingIndicator.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				7581465B2C7B1856007AF1A7 /* TabButton.swift */,
 				7581465D2C7B187F007AF1A7 /* FlashCardsMenuView.swift */,
 				758146622C7B26A4007AF1A7 /* StatView.swift */,
+				758146762C7B54F9007AF1A7 /* WordCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				75E23E142C66BC5500E886C7 /* QuizView.swift in Sources */,
 				756ACF3A2C52053500D3BFCD /* ProfileView.swift in Sources */,
 				75C6E72C2C4BF4630089667C /* Card.swift in Sources */,
+				758146772C7B54F9007AF1A7 /* WordCard.swift in Sources */,
 				75E23E162C66D86400E886C7 /* LearningProgressView.swift in Sources */,
 				7581465E2C7B187F007AF1A7 /* FlashCardsMenuView.swift in Sources */,
 				758146732C7B285A007AF1A7 /* IsKnownView.swift in Sources */,
