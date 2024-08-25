@@ -13,7 +13,7 @@ struct WordCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(word.english)
+                Text(word.english.capitalized)
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -23,7 +23,7 @@ struct WordCard: View {
             }
             
             Text(word.englishMeanings.first ?? "")
-                .font(.body)
+                .font(.subheadline)
             
             Text(word.sentence)
                 .font(.subheadline)
@@ -35,12 +35,23 @@ struct WordCard: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
-                Button(action: {
-                    withAnimation {
-                        word.bookmarked.toggle()
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            HapticFeedbackManager.shared.playImpact()
+                            speakWord()
+                        }
+                    }) {
+                        Image(systemName: "speaker.wave.3")
                     }
-                }) {
-                    Image(systemName: word.bookmarked ? "bookmark.fill" : "bookmark")
+                    Button(action: {
+                        withAnimation {
+                            HapticFeedbackManager.shared.playImpact()
+                            word.bookmarked.toggle()
+                        }
+                    }) {
+                        Image(systemName: word.bookmarked ? "bookmark.fill" : "bookmark")
+                    }
                 }
             }
             .padding(.top, 8)
@@ -49,5 +60,9 @@ struct WordCard: View {
         .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+    }
+    
+    private func speakWord() {
+        SpeechSynthesizer.shared.speak(word.english)
     }
 }

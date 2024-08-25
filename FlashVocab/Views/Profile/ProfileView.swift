@@ -7,10 +7,11 @@
 
 import SwiftUI
 import SwiftData
+import Charts
 
 struct ProfileView: View {
     @Query
-    private var appstates: [AppState]
+    private var appStates: [AppState]
     @State private var showingLearningProgress = false
     
     var body: some View {
@@ -26,7 +27,7 @@ struct ProfileView: View {
                     BookmarkedWordsView()
                 }
             }
-            
+#if DEBUG
             Section(header: Text("İlerleme")) {
                 LearningProgressView()
                     .frame(height: 300)
@@ -40,11 +41,17 @@ struct ProfileView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
+#endif
+            Section(header: Text("Detaylı İstatistikler")) {
+                NavigationLink("İstatistiklerim") {
+                    StatisticsView()
+                }
+            }
 #if DEBUG
             Section(header: Text("Sistem Bilgileri")) {
                 NavigationLink("AppStates") {
                     List {
-                        ForEach(appstates) { appstate in
+                        ForEach(appStates) { appstate in
                             Text("Son Kart Indeksi: \(appstate.lastCardIndex)")
                         }
                     }

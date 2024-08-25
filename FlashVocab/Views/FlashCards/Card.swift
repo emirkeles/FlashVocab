@@ -49,7 +49,7 @@ struct Card: View {
             Text(word.english.capitalized)
                 .font(.largeTitle)
                 .foregroundStyle(.primary)
-            Text(word.phonetic.capitalized)
+            Text(word.phonetic)
                 .font(.title3)
                 .foregroundStyle(.secondary)
             
@@ -92,10 +92,21 @@ struct Card: View {
     private var actionButtons: some View {
         HStack(spacing: 20) {
             bookmarkButton
+            speechButton
             infoButton
         }
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    private var speechButton: some View {
+        Button(action: speakWord, label: {
+            Image(systemName: "speaker.wave.2.circle")
+                .resizable()
+                .frame(width: 60, height: 60)
+        })
+        .padding()
+        .tint(.blue)
     }
     
     private var bookmarkButton: some View {
@@ -121,10 +132,15 @@ struct Card: View {
     private var attributedSentence: AttributedString {
         var attributedString = AttributedString(word.sentence)
         if let range = attributedString.range(of: word.english, options: .caseInsensitive) {
-            attributedString[range].font = .callout.bold()
+            attributedString[range].font = .callout.bold().italic()
             attributedString[range].underlineStyle = .single
         }
         return attributedString
+    }
+    
+    private func speakWord() {
+        HapticFeedbackManager.shared.playImpact(style: .medium)
+        SpeechSynthesizer.shared.speak(word.english)
     }
     
     private func toggleInfo() {

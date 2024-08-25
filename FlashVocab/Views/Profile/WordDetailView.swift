@@ -55,10 +55,10 @@ struct WordDetailView: View {
     
     private var meaningCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Anlamlar")
+            Text("Anlam")
                 .font(.headline)
             ForEach(word.englishMeanings, id: \.self) { meaning in
-                Text("• \(meaning)")
+                Text("\(meaning)")
                     .font(.body)
             }
         }
@@ -114,6 +114,7 @@ struct WordDetailView: View {
             Spacer()
             Button(action: {
                 withAnimation {
+                    HapticFeedbackManager.shared.playImpact()
                     word.bookmarked.toggle()
                 }
             }, label: {

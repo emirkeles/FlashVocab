@@ -31,13 +31,23 @@
 		758146652C7B26F8007AF1A7 /* AnswerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146642C7B26F8007AF1A7 /* AnswerRow.swift */; };
 		758146672C7B270F007AF1A7 /* QuestionAnswerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146662C7B270F007AF1A7 /* QuestionAnswerCard.swift */; };
 		758146692C7B2731007AF1A7 /* QuestionPerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146682C7B2731007AF1A7 /* QuestionPerformanceCard.swift */; };
-		7581466B2C7B2749007AF1A7 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581466A2C7B2749007AF1A7 /* CircularProgressView.swift */; };
 		7581466D2C7B275F007AF1A7 /* SummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581466C2C7B275F007AF1A7 /* SummaryItem.swift */; };
 		7581466F2C7B2807007AF1A7 /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581466E2C7B2807007AF1A7 /* WordDetailView.swift */; };
 		758146712C7B2823007AF1A7 /* BookmarkedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */; };
 		758146732C7B285A007AF1A7 /* IsKnownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146722C7B285A007AF1A7 /* IsKnownView.swift */; };
 		758146752C7B3E7B007AF1A7 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146742C7B3E7B007AF1A7 /* StreakManager.swift */; };
 		758146772C7B54F9007AF1A7 /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146762C7B54F9007AF1A7 /* WordCard.swift */; };
+		758146792C7B6C42007AF1A7 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146782C7B6C42007AF1A7 /* SpeechSynthesizer.swift */; };
+		7581467B2C7B9BD4007AF1A7 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581467A2C7B9BD4007AF1A7 /* StatisticsView.swift */; };
+		7581467F2C7BA614007AF1A7 /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581467E2C7BA614007AF1A7 /* TimeRange.swift */; };
+		758146812C7BA62A007AF1A7 /* WordTypeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146802C7BA62A007AF1A7 /* WordTypeDistributionChart.swift */; };
+		758146832C7BA648007AF1A7 /* LearningTrendChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146822C7BA648007AF1A7 /* LearningTrendChart.swift */; };
+		758146852C7BA65B007AF1A7 /* TimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146842C7BA65B007AF1A7 /* TimeRangePicker.swift */; };
+		758146872C7BA67D007AF1A7 /* WordTypeDistributionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146862C7BA67D007AF1A7 /* WordTypeDistributionSection.swift */; };
+		758146892C7BA698007AF1A7 /* LearningTrendSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146882C7BA698007AF1A7 /* LearningTrendSection.swift */; };
+		7581468B2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581468A2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift */; };
+		7581468D2C7BAB3B007AF1A7 /* ChangeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581468C2C7BAB3B007AF1A7 /* ChangeIndicator.swift */; };
+		7581468F2C7BAB53007AF1A7 /* StatisticRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581468E2C7BAB53007AF1A7 /* StatisticRow.swift */; };
 		75C6E7262C4BBD180089667C /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75C6E7252C4BBD180089667C /* SwiftfulUI */; };
 		75C6E72A2C4BEDEA0089667C /* FlashCardDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */; };
 		75C6E72C2C4BF4630089667C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C6E72B2C4BF4630089667C /* Card.swift */; };
@@ -76,13 +86,23 @@
 		758146642C7B26F8007AF1A7 /* AnswerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRow.swift; sourceTree = "<group>"; };
 		758146662C7B270F007AF1A7 /* QuestionAnswerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerCard.swift; sourceTree = "<group>"; };
 		758146682C7B2731007AF1A7 /* QuestionPerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPerformanceCard.swift; sourceTree = "<group>"; };
-		7581466A2C7B2749007AF1A7 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		7581466C2C7B275F007AF1A7 /* SummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItem.swift; sourceTree = "<group>"; };
 		7581466E2C7B2807007AF1A7 /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedWordsView.swift; sourceTree = "<group>"; };
 		758146722C7B285A007AF1A7 /* IsKnownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKnownView.swift; sourceTree = "<group>"; };
 		758146742C7B3E7B007AF1A7 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
 		758146762C7B54F9007AF1A7 /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
+		758146782C7B6C42007AF1A7 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
+		7581467A2C7B9BD4007AF1A7 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		7581467E2C7BA614007AF1A7 /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
+		758146802C7BA62A007AF1A7 /* WordTypeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTypeDistributionChart.swift; sourceTree = "<group>"; };
+		758146822C7BA648007AF1A7 /* LearningTrendChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTrendChart.swift; sourceTree = "<group>"; };
+		758146842C7BA65B007AF1A7 /* TimeRangePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangePicker.swift; sourceTree = "<group>"; };
+		758146862C7BA67D007AF1A7 /* WordTypeDistributionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTypeDistributionSection.swift; sourceTree = "<group>"; };
+		758146882C7BA698007AF1A7 /* LearningTrendSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTrendSection.swift; sourceTree = "<group>"; };
+		7581468A2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningStatisticsSection.swift; sourceTree = "<group>"; };
+		7581468C2C7BAB3B007AF1A7 /* ChangeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIndicator.swift; sourceTree = "<group>"; };
+		7581468E2C7BAB53007AF1A7 /* StatisticRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticRow.swift; sourceTree = "<group>"; };
 		75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardDataContainer.swift; sourceTree = "<group>"; };
 		75C6E72B2C4BF4630089667C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingIndicator.swift; sourceTree = "<group>"; };
@@ -159,23 +179,13 @@
 		753D34342C751C8B00719773 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				753D34352C751CB600719773 /* QuizView */,
-				75C6E72B2C4BF4630089667C /* Card.swift */,
-				75E23E1E2C66D92000E886C7 /* MainView.swift */,
-				7581466E2C7B2807007AF1A7 /* WordDetailView.swift */,
-				758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */,
-				750105FB2C4836DD000EB40C /* ContentView.swift */,
-				758146722C7B285A007AF1A7 /* IsKnownView.swift */,
-				75E23E152C66D86400E886C7 /* LearningProgressView.swift */,
-				7581466A2C7B2749007AF1A7 /* CircularProgressView.swift */,
-				756A85F22C50AD430054DE9B /* FlashCardsView.swift */,
-				756ACF392C52053500D3BFCD /* ProfileView.swift */,
-				756A85F02C50AD1E0054DE9B /* SettingsView.swift */,
-				758146592C7B1841007AF1A7 /* MenuCard.swift */,
 				7581465B2C7B1856007AF1A7 /* TabButton.swift */,
-				7581465D2C7B187F007AF1A7 /* FlashCardsMenuView.swift */,
-				758146622C7B26A4007AF1A7 /* StatView.swift */,
-				758146762C7B54F9007AF1A7 /* WordCard.swift */,
+				75E23E1E2C66D92000E886C7 /* MainView.swift */,
+				750105FB2C4836DD000EB40C /* ContentView.swift */,
+				758146902C7BACAD007AF1A7 /* FlashCards */,
+				7581467C2C7BA5F4007AF1A7 /* Profile */,
+				753D34352C751CB600719773 /* QuizView */,
+				756A85F02C50AD1E0054DE9B /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +193,7 @@
 		753D34352C751CB600719773 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
+				758146622C7B26A4007AF1A7 /* StatView.swift */,
 				75E23E132C66BC5500E886C7 /* QuizView.swift */,
 				75E23E1A2C66D8B400E886C7 /* QuizRowView.swift */,
 				75E23E1C2C66D8F800E886C7 /* QuizDetailView.swift */,
@@ -235,8 +246,51 @@
 				751D22012C696D8F0070F0F0 /* HapticManager.swift */,
 				756226A22C64BB0500B68E61 /* ToastManager.swift */,
 				758146742C7B3E7B007AF1A7 /* StreakManager.swift */,
+				758146782C7B6C42007AF1A7 /* SpeechSynthesizer.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		7581467C2C7BA5F4007AF1A7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7581466E2C7B2807007AF1A7 /* WordDetailView.swift */,
+				756ACF392C52053500D3BFCD /* ProfileView.swift */,
+				758146762C7B54F9007AF1A7 /* WordCard.swift */,
+				75E23E152C66D86400E886C7 /* LearningProgressView.swift */,
+				758146702C7B2823007AF1A7 /* BookmarkedWordsView.swift */,
+				758146722C7B285A007AF1A7 /* IsKnownView.swift */,
+				7581467D2C7BA604007AF1A7 /* Statistics */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7581467D2C7BA604007AF1A7 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				7581467E2C7BA614007AF1A7 /* TimeRange.swift */,
+				758146842C7BA65B007AF1A7 /* TimeRangePicker.swift */,
+				7581468A2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift */,
+				7581468C2C7BAB3B007AF1A7 /* ChangeIndicator.swift */,
+				758146882C7BA698007AF1A7 /* LearningTrendSection.swift */,
+				7581468E2C7BAB53007AF1A7 /* StatisticRow.swift */,
+				7581467A2C7B9BD4007AF1A7 /* StatisticsView.swift */,
+				758146862C7BA67D007AF1A7 /* WordTypeDistributionSection.swift */,
+				758146802C7BA62A007AF1A7 /* WordTypeDistributionChart.swift */,
+				758146822C7BA648007AF1A7 /* LearningTrendChart.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		758146902C7BACAD007AF1A7 /* FlashCards */ = {
+			isa = PBXGroup;
+			children = (
+				756A85F22C50AD430054DE9B /* FlashCardsView.swift */,
+				7581465D2C7B187F007AF1A7 /* FlashCardsMenuView.swift */,
+				758146592C7B1841007AF1A7 /* MenuCard.swift */,
+				75C6E72B2C4BF4630089667C /* Card.swift */,
+			);
+			path = FlashCards;
 			sourceTree = "<group>";
 		};
 		75C6E72F2C4BF6140089667C /* Models */ = {
@@ -292,11 +346,11 @@
 			};
 			buildConfigurationList = 750105F12C4836DD000EB40C /* Build configuration list for PBXProject "FlashVocab" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				tr,
 			);
 			mainGroup = 750105ED2C4836DD000EB40C;
 			packageReferences = (
@@ -336,6 +390,7 @@
 				7581466F2C7B2807007AF1A7 /* WordDetailView.swift in Sources */,
 				75E23E192C66D89900E886C7 /* QuizListView.swift in Sources */,
 				75C6E72E2C4BF48A0089667C /* SwipingIndicator.swift in Sources */,
+				758146832C7BA648007AF1A7 /* LearningTrendChart.swift in Sources */,
 				756226A52C64DE2600B68E61 /* Quiz.swift in Sources */,
 				756226A32C64BB0500B68E61 /* ToastManager.swift in Sources */,
 				750105FC2C4836DD000EB40C /* ContentView.swift in Sources */,
@@ -347,11 +402,12 @@
 				7581465A2C7B1841007AF1A7 /* MenuCard.swift in Sources */,
 				756226A72C64DE4000B68E61 /* QuizQuestion.swift in Sources */,
 				7501060D2C4856B5000EB40C /* LearnedWord.swift in Sources */,
-				7581466B2C7B2749007AF1A7 /* CircularProgressView.swift in Sources */,
 				75C6E72A2C4BEDEA0089667C /* FlashCardDataContainer.swift in Sources */,
+				758146852C7BA65B007AF1A7 /* TimeRangePicker.swift in Sources */,
 				758146582C7B180C007AF1A7 /* BookmarkedFlashCardsView.swift in Sources */,
 				75E23E1B2C66D8B400E886C7 /* QuizRowView.swift in Sources */,
 				75E23E1D2C66D8F800E886C7 /* QuizDetailView.swift in Sources */,
+				7581467F2C7BA614007AF1A7 /* TimeRange.swift in Sources */,
 				758146652C7B26F8007AF1A7 /* AnswerRow.swift in Sources */,
 				758146692C7B2731007AF1A7 /* QuestionPerformanceCard.swift in Sources */,
 				750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */,
@@ -359,13 +415,21 @@
 				75E23E212C66D9B300E886C7 /* AppState.swift in Sources */,
 				758146712C7B2823007AF1A7 /* BookmarkedWordsView.swift in Sources */,
 				758146632C7B26A4007AF1A7 /* StatView.swift in Sources */,
+				758146812C7BA62A007AF1A7 /* WordTypeDistributionChart.swift in Sources */,
 				75E23E142C66BC5500E886C7 /* QuizView.swift in Sources */,
 				756ACF3A2C52053500D3BFCD /* ProfileView.swift in Sources */,
+				758146892C7BA698007AF1A7 /* LearningTrendSection.swift in Sources */,
+				7581467B2C7B9BD4007AF1A7 /* StatisticsView.swift in Sources */,
 				75C6E72C2C4BF4630089667C /* Card.swift in Sources */,
+				758146872C7BA67D007AF1A7 /* WordTypeDistributionSection.swift in Sources */,
 				758146772C7B54F9007AF1A7 /* WordCard.swift in Sources */,
 				75E23E162C66D86400E886C7 /* LearningProgressView.swift in Sources */,
 				7581465E2C7B187F007AF1A7 /* FlashCardsMenuView.swift in Sources */,
+				7581468B2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift in Sources */,
 				758146732C7B285A007AF1A7 /* IsKnownView.swift in Sources */,
+				7581468D2C7BAB3B007AF1A7 /* ChangeIndicator.swift in Sources */,
+				7581468F2C7BAB53007AF1A7 /* StatisticRow.swift in Sources */,
+				758146792C7B6C42007AF1A7 /* SpeechSynthesizer.swift in Sources */,
 				758146752C7B3E7B007AF1A7 /* StreakManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
