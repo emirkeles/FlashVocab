@@ -11,10 +11,9 @@ import SwiftData
 struct IsKnownView: View {
     var isKnown: Bool
     var navigationTitle: String
-    @Namespace private var namespace
-    @Query
-    var items: [Word]
+    @Query var items: [Word]
     @State private var selectedWord: Word?
+    @State private var searchText = ""
     
     init(isKnown: Bool, navigationTitle: String) {
         self.isKnown = isKnown
@@ -27,69 +26,95 @@ struct IsKnownView: View {
     }
     
     var body: some View {
-        Group {
-            if items.isEmpty {
-                emptyStateView
-            } else {
-                wordList
+            Group {
+                if filteredItems.isEmpty {
+                    emptyStateView
+                } else {
+                    wordList
+                }
+            }
+            .navigationTitle(navigationTitle)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Kelime ara")
+            .sheet(item: $selectedWord) { word in
+                WordDetailView(word: word)
             }
         }
-        .navigationTitle(navigationTitle)
-        .sheet(item: $selectedWord) { word in
-            WordDetailView(word: word)
-        }
-        
-    }
     
-    private func markAsUnknown(_ word: Word) {
-        withAnimation {
-            word.isKnown?.toggle()
+    private var filteredItems: [Word] {
+            if searchText.isEmpty {
+                return items
+            } else {
+                return items.filter { word in
+                    word.english.lowercased().contains(searchText.lowercased()) ||
+                    word.turkish.lowercased().contains(searchText.lowercased())
+                }
+            }
         }
-        
-    }
     
     private var emptyStateView: some View {
-        VStack {
-            GroupBox {
-                ContentUnavailableView("Hiç kelime bulunamadı", systemImage: "book.fill")
+            ContentUnavailableView {
+                Label("Kelime bulunamadı", systemImage: "book.fill")
+            } description: {
+                Text(searchText.isEmpty ? "Hiç kelime eklenmemiş" : "Arama sonucu bulunamadı")
             }
-            .padding()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-    }
     
     private var wordList: some View {
-        List {
-            ForEach(items) { word in
-                wordRow(word, isKnown: true)
-                    .onTapGesture {
-                        selectedWord = word
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    ForEach(filteredItems) { word in
+                        WordCard(word: word)
+                            .onTapGesture {
+                                selectedWord = word
+                            }
                     }
+                }
+                .padding()
             }
         }
-    }
+}
+
+struct WordCard: View {
+    let word: Word
     
-    private func wordRow(_ word: Word, isKnown: Bool) -> some View {
-        HStack {
-            Text(word.english)
-                .id(word.id)
-                .transition(.asymmetric(insertion: .scale.combined(with: .opacity),
-                                        removal: .scale.combined(with: .opacity)))
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button(role: isKnown ? .destructive : .destructive) {
-                        toggleKnownStatus(word)
-                    } label: {
-                        Label(isKnown ? "Bilmiyorum" : "Biliyorum", systemImage: isKnown ? "xmark" : "checkmark")
-                            .foregroundColor(isKnown ? .red : .green)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(word.english)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                Spacer()
+                Text("(\(word.partOfSpeech))")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Text(word.englishMeanings.first ?? "")
+                .font(.body)
+            
+            Text(word.sentence)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.top, 4)
+            
+            HStack {
+                Text(word.learnedDate ?? Date(), style: .date)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        word.bookmarked.toggle()
                     }
-                    .tint(isKnown ? .red : .green)
+                }) {
+                    Image(systemName: word.bookmarked ? "bookmark.fill" : "bookmark")
                 }
+            }
+            .padding(.top, 8)
         }
-    }
-    
-    private func toggleKnownStatus(_ word: Word) {
-        withAnimation {
-            word.isKnown?.toggle()
-        }
+        .padding()
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
