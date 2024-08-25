@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    @State private var selectedTab: Tab = .quiz
+    @State private var selectedTab: Tab = .flashCards
     @Namespace private var animation
     
     var body: some View {
@@ -17,6 +17,10 @@ struct MainView: View {
             headerView
             topTabView
             tabView
+
+        }
+        .onAppear {
+            StreakManager.shared.updateStreak()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
@@ -35,17 +39,7 @@ extension MainView {
                     .foregroundColor(.secondary)
             }
             Spacer()
-            HStack(spacing: 4) {
-                Text("\(Text("x").font(.title2))3")
-                    .foregroundStyle(.orange)
-                    .font(.largeTitle)
-                    .fontDesign(.monospaced)
-                Image(systemName: "flame.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .foregroundStyle(.orange)
-            }
+            StreakView()
         }
     }
     
@@ -74,9 +68,6 @@ extension MainView {
                         color: .blue
                     )
                 }
-                
-                
-                
                 NavigationLink(destination: QuizListView()) {
                     MenuCard(
                         title: "Geçmiş Quiz'ler",
@@ -87,27 +78,28 @@ extension MainView {
                 }
             }
         } else {
-            NavigationLink(destination: FlashCardsView()) {
-                MenuCard(
-                    title: "FlashCards",
-                    description: "Yeni kelimelerle çalış",
-                    icon: "rectangle.stack.fill",
-                    color: .yellow
-                )
-            }
-            NavigationLink {
-                BookmarkedFlashCardsView()
-            } label: {
-                MenuCard(
-                    title: "Yer İşaretli Kelimeler",
-                    description: "Yer işaretleri ile çalış",
-                    icon: "bookmark.fill",
-                    color: .orange
-                )
+            VStack(spacing: 15) {
+                NavigationLink(destination: FlashCardsView()) {
+                    MenuCard(
+                        title: "Flaş Kartlar",
+                        description: "Yeni kelimelerle çalış",
+                        icon: "rectangle.stack.fill",
+                        color: .yellow
+                    )
+                }
+                NavigationLink {
+                    BookmarkedFlashCardsView()
+                } label: {
+                    MenuCard(
+                        title: "Yer İşaretli Kartlar",
+                        description: "Yer işaretleri ile çalış",
+                        icon: "bookmark.fill",
+                        color: .orange
+                    )
+                }
             }
         }
     }
-    
     
     enum Tab: String, CaseIterable {
         case quiz = "Quiz"
