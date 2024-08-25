@@ -1,122 +1,553 @@
 [
     {
-        "index": 0,
-        "english": "apple",
-        "turkish": "elma",
-        "sentence": "I ate an apple",
-    },
-    {
-        "index": 1,
-        "english": "book",
-        "turkish": "kitap",
-        "sentence": "She read a book.",
-    },
-    {
-        "index": 2,
-        "english": "car",
-        "turkish": "araba",
-        "sentence": "He drove a car.",
-    },
-    {
-        "index": 3,
-        "english": "dog",
-        "turkish": "köpek",
-        "sentence": "The dog is barking.",
-    },
-    {
-        "index": 4,
-        "english": "house",
-        "turkish": "ev",
-        "sentence": "They bought a new house.",
-    },
-    {
-        "index": 5,
-        "english": "sun",
-        "turkish": "güneş",
-        "sentence": "The sun is shining brightly.",
-    },
-    {
-        "index": 6,
-        "english": "water",
-        "turkish": "su",
-        "sentence": "I drink water every day.",
-    },
-    {
-        "index": 7,
-        "english": "tree",
-        "turkish": "ağaç",
-        "sentence": "The tree is very tall.",
-    },
-    {
-        "index": 8,
-        "english": "friend",
-        "turkish": "arkadaş",
-        "sentence": "She is my best friend.",
-    },
-    {
-        "index": 9,
-        "english": "school",
-        "turkish": "okul",
-        "sentence": "The children go to school.",
-    },
-    {
-        "index": 10,
-        "english": "food",
-        "turkish": "yemek",
-        "sentence": "The food smells delicious.",
-    },
-    {
-        "index": 11,
-        "english": "flower",
-        "turkish": "çiçek",
-        "sentence": "She planted a flower in the garden.",
-    },
-    {
-        "index": 12,
-        "english": "phone",
-        "turkish": "telefon",
-        "sentence": "I called him on the phone.",
-    },
-    {
-        "index": 13,
-        "english": "city",
-        "turkish": "şehir",
-        "sentence": "We live in a big city.",
-    },
-    {
-        "index": 14,
-        "english": "bird",
-        "turkish": "kuş",
-        "sentence": "The bird is singing.",
-    },
-    {
-        "index": 15,
-        "english": "time",
-        "turkish": "zaman",
-        "sentence": "Time flies when you're having fun.",
-    },
-    {
-        "index": 16,
-        "english": "family",
-        "turkish": "aile",
-        "sentence": "Family is important.",
-    },
-    {
-        "index": 17,
-        "english": "music",
-        "turkish": "müzik",
-        "sentence": "I love listening to music.",
-    },
-    {
-        "index": 18,
-        "english": "computer",
-        "turkish": "bilgisayar",
-        "sentence": "He works on his computer.",
-    },
-    {
-        "index": 19,
-        "english": "love",
-        "turkish": "aşk",
-        "sentence": "Love conquers all.",
-    }
+            "index": 0,
+            "english": "apple",
+            "phonetic": "/ˈæp.əl/",
+            "turkish": "elma",
+            "sentence": "I usually have an apple for a healthy snack in the afternoon.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A round fruit with red, green, or yellow skin and crisp flesh"
+            ]
+        },
+        {
+            "index": 1,
+            "english": "book",
+            "phonetic": "/bʊk/",
+            "turkish": "kitap",
+            "sentence": "I'm currently reading a book about the history of ancient civilizations.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A written or printed work consisting of pages glued or sewn together along one side and bound in covers"
+            ]
+        },
+        {
+            "index": 2,
+            "english": "car",
+            "phonetic": "/kɑːr/",
+            "turkish": "araba",
+            "sentence": "We decided to rent a car for our weekend trip to the countryside.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A road vehicle, typically with four wheels, powered by an internal combustion engine or electric motor and able to carry a small number of people"
+            ]
+        },
+        {
+            "index": 3,
+            "english": "dog",
+            "phonetic": "/dɔːɡ/",
+            "turkish": "köpek",
+            "sentence": "My neighbor's dog always barks when someone walks past their house.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, nonretractable claws, and a barking, howling, or whining voice"
+            ]
+        },
+        {
+            "index": 4,
+            "english": "house",
+            "phonetic": "/haʊs/",
+            "turkish": "ev",
+            "sentence": "We're planning to repaint our house next month to give it a fresh look.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A building for human habitation, especially one that consists of a ground floor and one or more upper storeys"
+            ]
+        },
+        {
+            "index": 5,
+            "english": "sun",
+            "phonetic": "/sʌn/",
+            "turkish": "güneş",
+            "sentence": "Remember to wear sunscreen when you're out in the sun for a long time.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "The star around which the earth orbits"
+            ]
+        },
+        {
+            "index": 6,
+            "english": "water",
+            "phonetic": "/ˈwɔːtər/",
+            "turkish": "su",
+            "sentence": "It's important to drink plenty of water, especially during hot weather.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A colorless, transparent, odorless liquid that forms the seas, lakes, rivers, and rain and is the basis of the fluids of living organisms"
+            ]
+        },
+        {
+            "index": 7,
+            "english": "tree",
+            "phonetic": "/triː/",
+            "turkish": "ağaç",
+            "sentence": "The old oak tree in our backyard provides shade on hot summer days.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A woody perennial plant, typically having a single stem or trunk growing to a considerable height and bearing lateral branches at some distance from the ground"
+            ]
+        },
+        {
+            "index": 8,
+            "english": "friend",
+            "phonetic": "/frend/",
+            "turkish": "arkadaş",
+            "sentence": "I'm meeting an old friend for coffee later; we haven't seen each other in years.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "A person with whom one has a bond of mutual affection, typically one exclusive of sexual or family relations"
+            ]
+        },
+        {
+            "index": 9,
+            "english": "school",
+            "phonetic": "/skuːl/",
+            "turkish": "okul",
+            "sentence": "The new school year starts next week, and I'm excited to see my classmates again.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "An institution for educating children"
+            ]
+        },
+        {
+            "index": 10,
+            "english": "food",
+            "phonetic": "/fuːd/",
+            "turkish": "yemek",
+            "sentence": "I love trying different types of food from around the world.",
+            "partOfSpeech": "n.",
+            "englishMeanings": [
+                "Any nutritious substance that people or animals eat or drink or that plants absorb in order to maintain life and growth"
+            ]
+        },
+        {
+                "index": 11,
+                "english": "flower",
+                "phonetic": "/ˈflaʊər/",
+                "turkish": "çiçek",
+                "sentence": "She received a beautiful bouquet of flowers for her birthday.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "The seed-bearing part of a plant, consisting of reproductive organs surrounded by brightly colored petals"
+                ]
+            },
+            {
+                "index": 12,
+                "english": "phone",
+                "phonetic": "/foʊn/",
+                "turkish": "telefon",
+                "sentence": "I need to charge my phone before we leave; the battery is almost dead.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "A device used to transmit sound over long distances, especially a mobile phone"
+                ]
+            },
+            {
+                "index": 13,
+                "english": "city",
+                "phonetic": "/ˈsɪti/",
+                "turkish": "şehir",
+                "sentence": "Living in a big city can be exciting, but it's also quite expensive.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "A large town, typically with a population of at least 100,000 people"
+                ]
+            },
+            {
+                "index": 14,
+                "english": "bird",
+                "phonetic": "/bɜːrd/",
+                "turkish": "kuş",
+                "sentence": "We often see colorful birds in our garden, especially in the spring.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "A warm-blooded egg-laying vertebrate animal distinguished by the possession of feathers, wings, a beak, and typically by being able to fly"
+                ]
+            },
+            {
+                "index": 15,
+                "english": "time",
+                "phonetic": "/taɪm/",
+                "turkish": "zaman",
+                "sentence": "I never seem to have enough time to finish all my tasks during the workweek.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "The indefinite continued progress of existence and events in the past, present, and future regarded as a whole"
+                ]
+            },
+            {
+                "index": 16,
+                "english": "family",
+                "phonetic": "/ˈfæməli/",
+                "turkish": "aile",
+                "sentence": "We're having a big family reunion next month to celebrate my grandparents' anniversary.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "A group consisting of parents and children living together in a household"
+                ]
+            },
+            {
+                "index": 17,
+                "english": "music",
+                "phonetic": "/ˈmjuːzɪk/",
+                "turkish": "müzik",
+                "sentence": "I enjoy listening to different genres of music, but classical is my favorite.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "Vocal or instrumental sounds combined in such a way as to produce beauty of form, harmony, and expression of emotion"
+                ]
+            },
+            {
+                "index": 18,
+                "english": "computer",
+                "phonetic": "/kəmˈpjuːtər/",
+                "turkish": "bilgisayar",
+                "sentence": "I need to upgrade my computer because it's getting too slow for my work.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "An electronic device for storing and processing data, typically in binary form, according to instructions given to it in a variable program"
+                ]
+            },
+            {
+                "index": 19,
+                "english": "love",
+                "phonetic": "/lʌv/",
+                "turkish": "aşk",
+                "sentence": "They say that love can overcome any obstacle, but relationships still require effort.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "An intense feeling of deep affection"
+                ]
+            },
+            {
+                "index": 20,
+                "english": "table",
+                "phonetic": "/ˈteɪ.bəl/",
+                "turkish": "masa",
+                "sentence": "We gathered around the table for a family dinner.",
+                "partOfSpeech": "n.",
+                "englishMeanings": [
+                    "A piece of furniture with a flat top and one or more legs, providing a level surface on which objects may be placed"
+                ]
+            },
+            {
+                    "index": 21,
+                    "english": "air",
+                    "phonetic": "/eər/",
+                    "turkish": "hava",
+                    "sentence": "The air feels fresh after the rain.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "The invisible gaseous substance surrounding the earth, a mixture mainly of oxygen and nitrogen"
+                    ]
+                },
+                {
+                    "index": 22,
+                    "english": "moon",
+                    "phonetic": "/muːn/",
+                    "turkish": "ay",
+                    "sentence": "The full moon lit up the night sky beautifully.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "The natural satellite of the earth, visible (chiefly at night) by reflected light from the sun"
+                    ]
+                },
+                {
+                    "index": 23,
+                    "english": "river",
+                    "phonetic": "/ˈrɪv.ər/",
+                    "turkish": "nehir",
+                    "sentence": "We went kayaking on the river last weekend.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A large natural stream of water flowing in a channel to the sea, a lake, or another such stream"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "english": "mountain",
+                    "phonetic": "/ˈmaʊn.tən/",
+                    "turkish": "dağ",
+                    "sentence": "The view from the top of the mountain was breathtaking.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A large natural elevation of the earth's surface rising abruptly from the surrounding level"
+                    ]
+                },
+                {
+                    "index": 25,
+                    "english": "paper",
+                    "phonetic": "/ˈpeɪ.pər/",
+                    "turkish": "kağıt",
+                    "sentence": "I need to buy some paper for the printer.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "Material manufactured in thin sheets from the pulp of wood or other fibrous substances, used for writing, drawing, or printing on"
+                    ]
+                },
+                {
+                    "index": 26,
+                    "english": "money",
+                    "phonetic": "/ˈmʌn.i/",
+                    "turkish": "para",
+                    "sentence": "It's important to save money for the future.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A current medium of exchange in the form of coins and banknotes"
+                    ]
+                },
+                {
+                    "index": 27,
+                    "english": "door",
+                    "phonetic": "/dɔːr/",
+                    "turkish": "kapı",
+                    "sentence": "Please close the door when you leave.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A hinged, sliding, or revolving barrier at the entrance to a building, room, or vehicle"
+                    ]
+                },
+                {
+                    "index": 28,
+                    "english": "window",
+                    "phonetic": "/ˈwɪn.dəʊ/",
+                    "turkish": "pencere",
+                    "sentence": "Open the window to let some fresh air in.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "An opening in the wall or roof of a building or vehicle that is fitted with glass or other transparent material in a frame to admit light or air and allow people to see out"
+                    ]
+                },
+                {
+                    "index": 29,
+                    "english": "chair",
+                    "phonetic": "/tʃeər/",
+                    "turkish": "sandalye",
+                    "sentence": "This chair is very comfortable to sit in.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A separate seat for one person, typically with a back and four legs"
+                    ]
+                },
+                {
+                    "index": 30,
+                    "english": "street",
+                    "phonetic": "/striːt/",
+                    "turkish": "sokak",
+                    "sentence": "Our house is on a quiet street in the suburbs.",
+                    "partOfSpeech": "n.",
+                    "englishMeanings": [
+                        "A public road in a city or town, typically with houses and buildings on one or both sides"
+                    ]
+                },
+                {
+                        "index": 31,
+                        "english": "hand",
+                        "phonetic": "/hænd/",
+                        "turkish": "el",
+                        "sentence": "She waved her hand to say goodbye.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "The end part of a person's arm beyond the wrist, including the palm, fingers, and thumb",
+                            "A pointer on a clock or watch indicating the passing of units of time"
+                        ]
+                    },
+                    {
+                        "index": 32,
+                        "english": "eye",
+                        "phonetic": "/aɪ/",
+                        "turkish": "göz",
+                        "sentence": "He has bright blue eyes like his mother.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "Each of a pair of globular organs of sight in the head of humans and vertebrate animals"
+                        ]
+                    },
+                    {
+                        "index": 33,
+                        "english": "heart",
+                        "phonetic": "/hɑːrt/",
+                        "turkish": "kalp",
+                        "sentence": "Exercise is good for your heart health.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "A hollow muscular organ that pumps the blood through the circulatory system"
+                        ]
+                    },
+                    {
+                        "index": 34,
+                        "english": "sea",
+                        "phonetic": "/siː/",
+                        "turkish": "deniz",
+                        "sentence": "We spent the day relaxing by the sea.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "The expanse of salt water that covers most of the Earth's surface"
+                        ]
+                    },
+                    {
+                        "index": 35,
+                        "english": "night",
+                        "phonetic": "/naɪt/",
+                        "turkish": "gece",
+                        "sentence": "The stars shine brightly in the night sky.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "The period of darkness in each twenty-four hours; the time from sunset to sunrise"
+                        ]
+                    },
+                    {
+                        "index": 36,
+                        "english": "day",
+                        "phonetic": "/deɪ/",
+                        "turkish": "gün",
+                        "sentence": "It's been a long day at work.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "A period of twenty-four hours as a unit of time"
+                        ]
+                    },
+                    {
+                        "index": 37,
+                        "english": "week",
+                        "phonetic": "/wiːk/",
+                        "turkish": "hafta",
+                        "sentence": "I'm going on vacation for a week next month.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "A period of seven days"
+                        ]
+                    },
+                    {
+                        "index": 38,
+                        "english": "year",
+                        "phonetic": "/jɪər/",
+                        "turkish": "yıl",
+                        "sentence": "This year has been full of unexpected events.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "The time taken by the earth to make one revolution around the sun"
+                        ]
+                    },
+                    {
+                        "index": 39,
+                        "english": "mother",
+                        "phonetic": "/ˈmʌð.ər/",
+                        "turkish": "anne",
+                        "sentence": "My mother always gives the best advice.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "A woman in relation to her child or children"
+                        ]
+                    },
+                    {
+                        "index": 40,
+                        "english": "father",
+                        "phonetic": "/ˈfɑː.ðər/",
+                        "turkish": "baba",
+                        "sentence": "My father taught me how to ride a bike.",
+                        "partOfSpeech": "n.",
+                        "englishMeanings": [
+                            "A man in relation to his child or children"
+                        ]
+                    },
+                    {
+                            "index": 41,
+                            "english": "brother",
+                            "phonetic": "/ˈbrʌð.ər/",
+                            "turkish": "erkek kardeş",
+                            "sentence": "My younger brother is starting college this fall.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A man or boy in relation to other sons and daughters of his parents"
+                            ]
+                        },
+                        {
+                            "index": 42,
+                            "english": "sister",
+                            "phonetic": "/ˈsɪs.tər/",
+                            "turkish": "kız kardeş",
+                            "sentence": "I helped my sister with her homework last night.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A woman or girl in relation to other daughters and sons of her parents"
+                            ]
+                        },
+                        {
+                            "index": 43,
+                            "english": "teacher",
+                            "phonetic": "/ˈtiː.tʃər/",
+                            "turkish": "öğretmen",
+                            "sentence": "Our new English teacher is very enthusiastic about literature.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A person who teaches, especially in a school"
+                            ]
+                        },
+                        {
+                            "index": 44,
+                            "english": "student",
+                            "phonetic": "/ˈstjuː.dənt/",
+                            "turkish": "öğrenci",
+                            "sentence": "As a student, it's important to manage your time effectively.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A person who is studying at a school or college"
+                            ]
+                        },
+                        {
+                            "index": 45,
+                            "english": "doctor",
+                            "phonetic": "/ˈdɒk.tər/",
+                            "turkish": "doktor",
+                            "sentence": "I have an appointment with the doctor next week for a check-up.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A qualified practitioner of medicine; a physician"
+                            ]
+                        },
+                        {
+                            "index": 46,
+                            "english": "nurse",
+                            "phonetic": "/nɜːs/",
+                            "turkish": "hemşire",
+                            "sentence": "The nurse took my blood pressure and temperature.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A person trained to care for the sick or infirm, especially in a hospital"
+                            ]
+                        },
+                        {
+                            "index": 47,
+                            "english": "friend",
+                            "phonetic": "/frend/",
+                            "turkish": "arkadaş",
+                            "sentence": "A good friend is always there for you in times of need.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A person with whom one has a bond of mutual affection, typically one exclusive of sexual or family relations"
+                            ]
+                        },
+                        {
+                            "index": 48,
+                            "english": "neighbor",
+                            "phonetic": "/ˈneɪ.bər/",
+                            "turkish": "komşu",
+                            "sentence": "Our new neighbors invited us over for dinner last night.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A person living next door to or very near to another"
+                            ]
+                        },
+                        {
+                            "index": 49,
+                            "english": "child",
+                            "phonetic": "/tʃaɪld/",
+                            "turkish": "çocuk",
+                            "sentence": "Every child deserves a good education and a loving home.",
+                            "partOfSpeech": "n.",
+                            "englishMeanings": [
+                                "A young human being below the age of puberty or below the legal age of majority"
+                            ]
+                        }
 ]
