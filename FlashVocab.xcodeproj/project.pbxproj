@@ -103,6 +103,7 @@
 		7581468A2C7BA6B4007AF1A7 /* LearningStatisticsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningStatisticsSection.swift; sourceTree = "<group>"; };
 		7581468C2C7BAB3B007AF1A7 /* ChangeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIndicator.swift; sourceTree = "<group>"; };
 		7581468E2C7BAB53007AF1A7 /* StatisticRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticRow.swift; sourceTree = "<group>"; };
+		758146912C7BAE7E007AF1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		75C6E7292C4BEDEA0089667C /* FlashCardDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardDataContainer.swift; sourceTree = "<group>"; };
 		75C6E72B2C4BF4630089667C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingIndicator.swift; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		750105F82C4836DD000EB40C /* FlashVocab */ = {
 			isa = PBXGroup;
 			children = (
+				758146912C7BAE7E007AF1A7 /* Info.plist */,
 				753D34332C751C7300719773 /* App */,
 				753D34342C751C8B00719773 /* Views */,
 				7562269E2C64BACD00B68E61 /* ViewModifiers */,
@@ -567,6 +569,7 @@
 				DEVELOPMENT_TEAM = BH686V263M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashVocab/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -600,6 +603,7 @@
 				DEVELOPMENT_TEAM = BH686V263M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashVocab/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
