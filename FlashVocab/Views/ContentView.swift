@@ -6,15 +6,10 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query
-    private var items: [Word]
     
     var body: some View {
-        
         TabView {
             NavigationStack {
                 MainView()
@@ -25,11 +20,6 @@ struct ContentView: View {
                 ProfileView()
             }
             .tabItem { Label("Profil", systemImage: "person.circle") }
-            
-            NavigationStack {
-                QuizListView()
-            }
-            .tabItem { Label("Geçmiş Quiz'ler", systemImage: "list.bullet") }
             
             NavigationStack {
                 SettingsView()
