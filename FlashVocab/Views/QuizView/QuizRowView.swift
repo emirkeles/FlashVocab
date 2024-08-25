@@ -12,35 +12,45 @@ struct QuizRowView: View {
     let quiz: Quiz
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Quiz Tarihi: \(quiz.date, formatter: itemFormatter)")
-                Text("Soru Sayısı: \(quiz.questions.count)")
-                if let score = quiz.score {
-                    Text("Skor: \(score)")
+        VStack {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(quiz.date, style: .date)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    Text(quiz.date, style: .time)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                ZStack {
+                    Circle()
+                        .stroke(Color.secondary.opacity(0.2), lineWidth: 4)
+                        .frame(width: 60, height: 60)
+                    
+                    Circle()
+                        .trim(from: 0, to: CGFloat(correctAnswersCount) / CGFloat(quiz.questions.count))
+                        .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                        .frame(width: 60, height: 60)
+                        .rotationEffect(.degrees(-90))
+                    
+                    Text("\(Int((CGFloat(correctAnswersCount) / CGFloat(quiz.questions.count)) * 100))%")
+                        .font(.system(size: 14, weight: .bold))
                 }
             }
             
-            Spacer()
-            
-            Chart {
-                SectorMark(
-                    angle: .value("Doğru", correctAnswersCount),
-                    innerRadius: .ratio(0.618),
-                    angularInset: 1.5
-                )
-                .foregroundStyle(.green)
-                
-                SectorMark(
-                    angle: .value("Yanlış", incorrectAnswersCount),
-                    innerRadius: .ratio(0.618),
-                    angularInset: 1.5
-                )
-                .foregroundStyle(.red)
+            HStack {
+                StatView(title: "Soru", value: "\(quiz.questions.count)", color: .blue)
+                StatView(title: "Doğru", value: "\(correctAnswersCount)", color: .green)
+                StatView(title: "Yanlış", value: "\(incorrectAnswersCount)", color: .red)
             }
-            .frame(width: 60, height: 60)
         }
-        .padding(.vertical, 8)
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
     
     private var correctAnswersCount: Int {
@@ -58,3 +68,5 @@ private let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
+
+

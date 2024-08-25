@@ -47,6 +47,8 @@ struct FlashCardsView: View {
         }
         .navigationTitle("FlashVocab")
         .navigationBarTitleDisplayMode(.inline)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+
         .animation(.smooth, value: cardOffsets)
         .onAppear(perform: loadLastIndex)
         .onChange(of: currentIndex) { oldValue, newValue in

@@ -18,20 +18,18 @@ struct QuizListView: View {
     var body: some View {
             List(quizzes) { quiz in
                 QuizRowView(quiz: quiz)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     .background(.white.opacity(0.00001))
                     .onTapGesture {
                         selectedQuiz = quiz
                     }
             }
+            .listStyle(.plain)
             .navigationTitle("Kayıtlı Quiz'ler")
+            
             .sheet(item: $selectedQuiz) { quiz in
                 QuizDetailView(quiz: quiz)
             }
     }
-}
-
-
-
-#Preview {
-    QuizListView()
 }

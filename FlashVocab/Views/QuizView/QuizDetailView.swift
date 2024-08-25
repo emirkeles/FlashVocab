@@ -10,52 +10,134 @@ import SwiftUI
 struct QuizDetailView: View {
     let quiz: Quiz
     
+    @State private var showingQuestionDetails = false
+    @State private var selectedQuestion: QuizQuestion?
+    
     var body: some View {
-        List {
-            Section(header: Text("Quiz Özeti")) {
-                Text("Toplam Soru: \(quiz.questions.count)")
-                Text("Doğru Cevap: \(quiz.questions.filter { $0.isCorrect }.count)")
-                Text("Yanlış Cevap: \(quiz.questions.filter { !$0.isCorrect }.count)")
-                Text("Skor: \(quiz.score ?? 0)")
+        ScrollView {
+            VStack(spacing: 25) {
+                quizSummaryCard
+                integratedPerformanceQuestionView
             }
-            
-            Section(header: Text("Sorular")) {
-                ForEach(quiz.questions, id: \.id) { question in
-                    QuestionDetailView(question: question)
+            .padding()
+        }
+        .navigationTitle("Quiz Sonucu")
+        .navigationBarTitleDisplayMode(.inline)
+        .background(Color(.systemBackground))
+    }
+    
+    private var integratedPerformanceQuestionView: some View {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Soru Detayları")
+                    .font(.system(size: 22, weight: .bold, design: .rounded))
+                    .padding(.bottom, 5)
+                
+                ForEach(quiz.questions.indices, id: \.self) { index in
+                    QuestionAnswerCard(question: quiz.questions[index], questionNumber: index + 1)
                 }
             }
         }
-        .navigationTitle("Quiz Detayı")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct QuestionDetailView: View {
-    let question: QuizQuestion
     
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Soru: \(question.word.english)")
-                .font(.headline)
-            
-            Text("Doğru Cevap: \(question.correctAnswer)")
-                .foregroundColor(.green)
-            
-            if let selectedAnswer = question.selectedAnswer {
-                Text("Kullanıcı Cevabı: \(selectedAnswer)")
-                    .foregroundColor(question.isCorrect ? .green : .red)
+    private var quizSummaryCard: some View {
+            HStack(spacing: 20) {
+                ZStack {
+                    Circle()
+                        .stroke(Color.blue.opacity(0.2), lineWidth: 8)
+                        .frame(width: 100, height: 100)
+                    
+                    Circle()
+                        .trim(from: 0, to: CGFloat(correctAnswersCount) / CGFloat(quiz.questions.count))
+                        .stroke(Color.blue, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                        .frame(width: 100, height: 100)
+                        .rotationEffect(.degrees(-90))
+                    
+                    VStack {
+                        Text("\(Int((Double(correctAnswersCount) / Double(quiz.questions.count)) * 100))%")
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
+                        Text("Doğru")
+                            .font(.system(size: 12, weight: .medium, design: .rounded))
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Skor: \(quiz.score ?? 0)")
+                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                    
+                    HStack(spacing: 15) {
+                        SummaryItem(title: "Toplam", value: "\(quiz.questions.count)", color: .blue)
+                        SummaryItem(title: "Doğru", value: "\(correctAnswersCount)", color: .green)
+                        SummaryItem(title: "Yanlış", value: "\(incorrectAnswersCount)", color: .red)
+                    }
+                }
             }
-            
-            Text("Diğer Seçenekler:")
-                .font(.subheadline)
-                .padding(.top, 4)
-            
-            ForEach(question.incorrectAnswers, id: \.self) { answer in
-                Text("- \(answer)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color(.secondarySystemBackground))
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+            )
+        }
+
+    private var correctAnswersCount: Int {
+        quiz.questions.filter { $0.isCorrect }.count
+    }
+    
+    private var incorrectAnswersCount: Int {
+        quiz.questions.filter { !$0.isCorrect }.count
+    }
+ 
+    private var questionsGrid: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 15) {
+            ForEach(quiz.questions) { question in
+                Button(action: {
+                    selectedQuestion = question
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(question.isCorrect ? Color.green.opacity(0.2) : Color.red.opacity(0.2))
+                            .frame(height: 80)
+                        
+                        Text(question.word.english)
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .multilineTextAlignment(.center)
+                    }
+                }
             }
         }
-        .padding(.vertical, 8)
     }
+    
+    private var performanceChart: some View {
+           VStack(alignment: .leading, spacing: 10) {
+               Text("Performans Analizi")
+                   .font(.headline)
+                   .padding(.bottom, 5)
+               
+               ForEach(0..<quiz.questions.count, id: \.self) { index in
+                   HStack {
+                       Text("\(index + 1).")
+                           .font(.caption)
+                           .frame(width: 25, alignment: .leading)
+                       
+                       Rectangle()
+                           .fill(quiz.questions[index].isCorrect ? Color.green : Color.red)
+                           .frame(height: 20)
+                           .overlay(
+                               Text(quiz.questions[index].word.english)
+                                   .font(.caption)
+                                   .foregroundColor(.white)
+                                   .padding(.horizontal, 5)
+                           )
+                           .cornerRadius(5)
+                       
+                       Image(systemName: quiz.questions[index].isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
+                           .foregroundColor(quiz.questions[index].isCorrect ? .green : .red)
+                   }
+               }
+           }
+           .padding()
+           .background(Color(.secondarySystemBackground))
+           .cornerRadius(20)
+       }
 }

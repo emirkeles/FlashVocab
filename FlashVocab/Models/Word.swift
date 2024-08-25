@@ -11,12 +11,16 @@ import SwiftData
 @Model
 final class Word: Hashable, Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
-        case index, english, turkish, sentence
+        case index, english, turkish, sentence, phonetic, partOfSpeech, englishMeanings
     }
     let index: Int
     let english: String
     let turkish: String
     let sentence: String
+    let phonetic: String
+    let partOfSpeech: String
+    let englishMeanings: [String]
+    
     var isKnown: Bool?
     var learnedDate: Date?
     var lastReviewDate: Date?
@@ -29,6 +33,9 @@ final class Word: Hashable, Decodable, Identifiable {
         english: String,
         turkish: String,
         sentence: String,
+        phonetic: String,
+        partOfSpeech: String,
+        englishMeanings: [String],
         isKnown: Bool? = nil,
         learnedDate: Date? = nil,
         lastReviewDate: Date? = nil,
@@ -39,6 +46,9 @@ final class Word: Hashable, Decodable, Identifiable {
         self.english = english
         self.turkish = turkish
         self.sentence = sentence
+        self.phonetic = phonetic
+        self.partOfSpeech = partOfSpeech
+        self.englishMeanings = englishMeanings
         self.isKnown = isKnown
         self.learnedDate = learnedDate
         self.lastReviewDate = lastReviewDate
@@ -53,6 +63,9 @@ final class Word: Hashable, Decodable, Identifiable {
         self.english = try container.decode(String.self, forKey: .english)
         self.turkish = try container.decode(String.self, forKey: .turkish)
         self.sentence = try container.decode(String.self, forKey: .sentence)
+        self.phonetic = try container.decode(String.self, forKey: .phonetic)
+        self.partOfSpeech = try container.decode(String.self, forKey: .partOfSpeech)
+        self.englishMeanings = try container.decode([String].self, forKey: .englishMeanings)
         
         self.isKnown = nil
         self.learnedDate = nil
@@ -94,10 +107,13 @@ extension Word {
         nextReviewDate = Date().addingTimeInterval(interval)
     }
     
+    static var bookmarkedWords: FetchDescriptor<Word> {
+        FetchDescriptor(predicate: #Predicate { $0.bookmarked == true }, sortBy: [SortDescriptor(\.index)])
+    }
+    
     static var all: FetchDescriptor<Word> {
         FetchDescriptor(sortBy: [SortDescriptor(\.index)])
     }
-    
     
     static var allWordsSortedByIndex: FetchDescriptor<Word> {
         var descriptor = FetchDescriptor<Word>(sortBy: [SortDescriptor(\.index)])

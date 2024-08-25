@@ -9,101 +9,144 @@ import SwiftUI
 
 struct Card: View {
     @State private var show: Bool = false
-    @State private var isToggle = false
     @State private var offsetSize: CGSize = .zero
     @State private var showToast: Bool = false
-    @State private var favorite = false
-    @State private var size: CGSize = .zero
     var word: Word
     
-    private func toggleFavorite() {
+    var body: some View {
+        ZStack {
+            cardBackground
+                .overlay(
+                    cardContent
+                        .padding()
+                )
+                .overlay(alignment: .bottom) {
+                    actionButtons
+                }
+        }
+        .offset(x: offsetSize.width, y: offsetSize.height)
+    }
+    
+    private var cardBackground: some View {
+        RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+            .fill(.thickMaterial)
+            .frame(maxHeight: 550)
+            .padding()
+    }
+    
+    private var cardContent: some View {
+        VStack(spacing: 40) {
+            wordHeader
+            if show {
+                wordDetails
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: show ? .top : .center)
+    }
+    
+    private var wordHeader: some View {
+        VStack {
+            Text(word.english.capitalized)
+                .font(.largeTitle)
+                .foregroundStyle(.primary)
+            Text(word.phonetic.capitalized)
+                .font(.title3)
+                .foregroundStyle(.secondary)
+            
+        }
+        .padding(.top, show ? 40 : 0)
+        .offset(y: show ? 0 : -80)
+    }
+    
+    private var wordDetails: some View {
+        VStack(spacing: 20) {
+            Text(word.turkish.capitalized)
+                .font(.title2)
+                .padding(.top, -5)
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Meaning:")
+                    .font(.headline)
+                ForEach(word.englishMeanings, id: \.self) { meaning in
+                    Text("(\(word.partOfSpeech)) ")
+                        .font(.subheadline)
+                    +
+                    Text("\(meaning)")
+                        .font(.subheadline)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Example:")
+                    .font(.headline)
+                Text("\(attributedSentence)")
+                    .font(.subheadline)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
+    }
+    
+    private var actionButtons: some View {
+        HStack(spacing: 20) {
+            bookmarkButton
+            infoButton
+        }
+        .padding(.bottom, 20)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    private var bookmarkButton: some View {
+        Button(action: toggleBookmark) {
+            Image(systemName: word.bookmarked ? "bookmark.circle.fill" : "bookmark.circle")
+                .resizable()
+                .frame(width: 60, height: 60)
+        }
+        .padding()
+        .tint(.orange)
+    }
+    
+    private var infoButton: some View {
+        Button(action: toggleInfo) {
+            Image(systemName: show ? "info.circle.fill" : "info.circle")
+                .resizable()
+                .frame(width: 60, height: 60)
+        }
+        .padding()
+        .tint(.gray.opacity(0.8))
+    }
+    
+    private var attributedSentence: AttributedString {
+        var attributedString = AttributedString(word.sentence)
+        if let range = attributedString.range(of: word.english, options: .caseInsensitive) {
+            attributedString[range].font = .callout.bold()
+            attributedString[range].underlineStyle = .single
+        }
+        return attributedString
+    }
+    
+    private func toggleInfo() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         withAnimation(.snappy(duration: 0.4)) {
             show.toggle()
         }
     }
     
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                .fill(.thickMaterial)
-                .frame(maxHeight: 540)
-                .padding()
-                .overlay(
-                    overlayView
-                )
-                .overlay(alignment: .bottom) {
-                    HStack(spacing: 20) {
-                        Button(action: toggleToast) {
-                            Image(systemName: favorite ? "bookmark.circle.fill" : "bookmark.circle")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                        }
-                        .padding()
-                        .tint(.orange)
-                        Button(action: toggleFavorite) {
-                            Image(systemName: show ? "info.circle.fill" : "info.circle")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                        }
-                        .padding()
-                        .tint(.gray.opacity(0.8))
-                    }
-                    .padding(.bottom, 20)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .offset(x: offsetSize.width, y: offsetSize.height)
-        }
-    }
-    
-    private func toggleToast() {
+    private func toggleBookmark() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         if !showToast {
-            if favorite {
-                ToastManager.shared.showToast(icon: "bookmark.slash.fill", title: "Yer İşaretlerinden Çıkartıldı")
-                word.bookmarked.toggle()
-                favorite.toggle()
-                showToast.toggle()
-            } else {
-                ToastManager.shared.showToast(icon: "bookmark.fill", title: "Yer İşaretlerine Eklendi")
-                word.bookmarked.toggle()
-                favorite.toggle()
-                showToast.toggle()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                showToast.toggle()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var overlayView: some View {
-        VStack(spacing: 40) {
-            Text(word.english)
-                .foregroundStyle(.primary)
-                .font(.largeTitle)
-                .padding(.top, show ? 40 : 0)
-                .offset(y: show ? 0 : -80)
+            word.bookmarked.toggle()
+            let (icon, title) = word.bookmarked
+            ? ("bookmark.fill", "Yer İşaretlerine Eklendi")
+            : ("bookmark.slash.fill", "Yer İşaretlerinden Çıkartıldı")
+            ToastManager.shared.showToast(icon: icon, title: title)
+            showToast = true
             
-            if show {
-                VStack(spacing: 20) {
-                    Text(word.sentence)
-                        .font(.callout)
-                        .padding(.horizontal)
-                    
-                    Text("a written or printed work consisting of pages glued or sewn together along one side and bound in covers.")
-                        .font(.headline)
-                        .padding(.top, 5)
-                        .padding(.horizontal, 20)
-                    
-                    Text(word.turkish)
-                        .font(.body)
-                        .padding(.top, 5)
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
-                .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                showToast = false
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: show ? .top : .center)
     }
 }
