@@ -20,21 +20,32 @@ struct QuizView: View {
     @State private var showNoQuizAvailable = false
     @State private var shuffledAnswers: [String] = []
     
-    
     var body: some View {
         Group {
-            if let quiz = quiz {
+            if let quiz {
                 if showResult {
                     quizResultView(quiz: quiz)
+                        .transition(.asymmetric(insertion: .offset(y: 500), removal: .offset(y: 500)))
                 } else if let currentQuestion = quiz.currentQuestion {
-                    quizQuestionView(question: currentQuestion)
-                        .onAppear {
-                            shuffledAnswers = currentQuestion.allAnswers
-                        }
+                    VStack(spacing: 80) {
+                        Text("Soru \(currentQuestionIndex + 1) / \(quiz.questions.count)")
+                            .font(.title).monospaced()
+                            .animation(.easeInOut, value: currentQuestionIndex)
+                            .contentTransition(.numericText())
+                            .padding(.top, 10)
+                        quizQuestionView(question: currentQuestion)
+                            .transition(.move(edge: .bottom))
+                            .onAppear {
+                                shuffledAnswers = currentQuestion.allAnswers
+                            }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 } else {
                     Text("Quiz tamamlandı!")
                         .onAppear {
-                            showResult = true
+                            withAnimation {
+                                showResult = true
+                            }
                         }
                 }
             } else if showNoQuizAvailable {
@@ -51,7 +62,7 @@ struct QuizView: View {
     
     private var noQuizAvailableView: some View {
         VStack {
-            Text("Yeterli bilinmeyen kelime yok!")
+            Text("Şu anda gözden geçirilecek kelime yok!")
                 .font(.title)
                 .multilineTextAlignment(.center)
             Text("En az 10 adet bilinmeyen kelime gerekli.")
@@ -84,12 +95,11 @@ struct QuizView: View {
     
     private func quizQuestionView(question: QuizQuestion) -> some View {
         VStack(spacing: 20) {
-            Text("Soru \(currentQuestionIndex + 1) / \(quiz?.questions.count ?? 0)")
-                .font(.headline)
-            
             Text(question.word.english.capitalized)
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .animation(.easeInOut, value: currentQuestionIndex)
+                .contentTransition(.symbolEffect)
             
             VStack {
                 ForEach(shuffledAnswers, id: \.self) { answer in
@@ -106,6 +116,7 @@ struct QuizView: View {
                     }
                 }
             }
+            .transition(.move(edge: .bottom))
             
             Button {
                 if let selected = selectedAnswer {
@@ -128,6 +139,8 @@ struct QuizView: View {
                     .background(selectedAnswer == nil ? Color.gray : Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    .scaleEffect(selectedAnswer == nil ? 1.0 : 1.1)
+                    .animation(.spring(response: 0.2, dampingFraction: 0.5, blendDuration: 0.5), value: selectedAnswer)
             }
         }
         .padding()
@@ -153,10 +166,12 @@ struct QuizView: View {
     }
     
     private func resetQuiz() {
-        showResult = false
-        currentQuestionIndex = 0
-        selectedAnswer = nil
-        shuffledAnswers = []
-        createQuiz()
+        withAnimation {
+            showResult = false
+            currentQuestionIndex = 0
+            selectedAnswer = nil
+            shuffledAnswers = []
+            createQuiz()
+        }
     }
 }
