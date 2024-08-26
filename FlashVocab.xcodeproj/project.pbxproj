@@ -13,6 +13,8 @@
 		750106002C4836DE000EB40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750105FF2C4836DE000EB40C /* Assets.xcassets */; };
 		750106032C4836DF000EB40C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750106022C4836DF000EB40C /* Preview Assets.xcassets */; };
 		7501060D2C4856B5000EB40C /* LearnedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7501060C2C4856B5000EB40C /* LearnedWord.swift */; };
+		751AF3CD2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751AF3CC2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift */; };
+		751AF3CF2C7C88880090ABDE /* OverlaySwipingIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751AF3CE2C7C88880090ABDE /* OverlaySwipingIndicators.swift */; };
 		751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751D22012C696D8F0070F0F0 /* HapticManager.swift */; };
 		754242C02C55486A00086A30 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 754242BF2C55486A00086A30 /* PopupView */; };
 		756226A02C64BAD800B68E61 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */; };
@@ -70,6 +72,8 @@
 		750106022C4836DF000EB40C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		750106092C483D41000EB40C /* words.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		7501060C2C4856B5000EB40C /* LearnedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedWord.swift; sourceTree = "<group>"; };
+		751AF3CC2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkOverlaySwipingIndicators.swift; sourceTree = "<group>"; };
+		751AF3CE2C7C88880090ABDE /* OverlaySwipingIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySwipingIndicators.swift; sourceTree = "<group>"; };
 		751D22012C696D8F0070F0F0 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		756226A22C64BB0500B68E61 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				75C6E72D2C4BF48A0089667C /* SwipingIndicator.swift */,
+				751AF3CC2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift */,
+				751AF3CE2C7C88880090ABDE /* OverlaySwipingIndicators.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				7581466D2C7B275F007AF1A7 /* SummaryItem.swift in Sources */,
 				7581465C2C7B1856007AF1A7 /* TabButton.swift in Sources */,
 				750105FE2C4836DD000EB40C /* Word.swift in Sources */,
+				751AF3CF2C7C88880090ABDE /* OverlaySwipingIndicators.swift in Sources */,
 				756A85F12C50AD1E0054DE9B /* SettingsView.swift in Sources */,
 				7581465A2C7B1841007AF1A7 /* MenuCard.swift in Sources */,
 				756226A72C64DE4000B68E61 /* QuizQuestion.swift in Sources */,
@@ -412,6 +419,7 @@
 				7581467F2C7BA614007AF1A7 /* TimeRange.swift in Sources */,
 				758146652C7B26F8007AF1A7 /* AnswerRow.swift in Sources */,
 				758146692C7B2731007AF1A7 /* QuestionPerformanceCard.swift in Sources */,
+				751AF3CD2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift in Sources */,
 				750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */,
 				751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */,
 				75E23E212C66D9B300E886C7 /* AppState.swift in Sources */,
