@@ -108,27 +108,29 @@ struct WordDetailView: View {
     }
     
     private var otherInfoCard: some View {
-        HStack {
-            Text("Yer İmi")
-                .font(.headline)
-            Spacer()
-            Button(action: {
-                withAnimation {
-                    HapticFeedbackManager.shared.playImpact()
-                    word.bookmarked.toggle()
-                }
-            }, label: {
+        Button(action: {
+            withAnimation {
+                HapticFeedbackManager.shared.playImpact()
+                word.bookmarked.toggle()
+            }
+        }, label: {
+            HStack {
+                Text("Yer İmi")
+                    .font(.headline)
+                Spacer()
                 Image(systemName: word.bookmarked ? "bookmark.fill" : "bookmark")
                     .foregroundColor(word.bookmarked ? .blue : .gray)
-            })
-            Text(word.bookmarked ? "Eklendi" : "Eklenmedi")
-                .font(.subheadline)
-                .contentTransition(.symbolEffect)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(12)
+                Text(word.bookmarked ? "Eklendi" : "Eklenmedi")
+                    .font(.subheadline)
+                    .contentTransition(.numericText())
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.secondarySystemGroupedBackground))
+            .cornerRadius(12)
+        })
+        .buttonStyle(.plain)
+        
     }
     
     private func detailRow(title: String, value: String) -> some View {

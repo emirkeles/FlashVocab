@@ -21,10 +21,10 @@ struct ContentView: View {
             }
             .tabItem { Label("Profil", systemImage: "person.circle") }
             
-            NavigationStack {
-                SettingsView()
-            }
-            .tabItem { Label("Settings", systemImage: "gear") }
+//            NavigationStack {
+//                SettingsView()
+//            }
+//            .tabItem { Label("Settings", systemImage: "gear") }
         }
     }
 }

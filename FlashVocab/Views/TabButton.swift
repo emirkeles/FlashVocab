@@ -14,10 +14,10 @@ struct TabButton: View {
     
     var body: some View {
         Button(action: {
-            withAnimation(.snappy) {
+            HapticFeedbackManager.shared.playSelection()
+            withAnimation(.smooth) {
                 selectedTab = tab
             }
-            
         }) {
             VStack(spacing: 4) {
                 Image(systemName: imageName)
@@ -27,7 +27,7 @@ struct TabButton: View {
             }
             .foregroundColor(selectedTab == tab ? .blue : .gray)
             .padding(.vertical, 8)
-            .padding(.horizontal, 16)
+            .frame(width: 100)
             .background(
                 ZStack {
                     if selectedTab == tab {
@@ -38,6 +38,7 @@ struct TabButton: View {
                 }
             )
             .cornerRadius(12)
+            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedTab)
         }
     }
     

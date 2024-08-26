@@ -13,7 +13,12 @@ struct ProfileView: View {
     @Query
     private var appStates: [AppState]
     @State private var showingLearningProgress = false
-    
+    @Query private var items: [Word]
+    @Query private var quizs: [Quiz]
+    @Query private var questions: [QuizQuestion]
+    @Environment(\.modelContext) private var modelContext
+    @State private var deleteAlert = false
+
     var body: some View {
         List {
             Section(header: Text("Kelime Listeleri")) {
@@ -47,6 +52,14 @@ struct ProfileView: View {
                     StatisticsView()
                 }
             }
+            
+            Section("Verileri Temizle") {
+                Button("Bütün Verileri Sil", role: .destructive) {
+                    HapticFeedbackManager.shared.playSelection()
+                    deleteAlert.toggle()
+                }
+                .buttonStyle(.borderless)
+            }
 #if DEBUG
             Section(header: Text("Sistem Bilgileri")) {
                 NavigationLink("AppStates") {
@@ -69,6 +82,22 @@ struct ProfileView: View {
                     })
             }
         }
+        .alert(isPresented: $deleteAlert) {
+            Alert(title: Text("Bütün Verileri Sil"), message: Text("Bütün verileri sileceğinizden emin misiniz"), primaryButton: .destructive(Text("Sil"), action: {
+                for item in items {
+                    print("siliyom")
+                    modelContext.delete(item)
+                }
+                for appstate in appStates {
+                    modelContext.delete(appstate)
+                }
+                for question in questions {
+                    modelContext.delete(question)
+                }
+                for quiz in quizs {
+                    modelContext.delete(quiz)
+                }
+            }), secondaryButton: .cancel())
+        }
     }
 }
-

@@ -72,7 +72,7 @@ struct BookmarkedFlashCardsView: View {
         if abs(dragOffset.width) > swipeThreshold {
             let direction: CGFloat = dragOffset.width > 0 ? 1 : -1
             let keepBookmarked = direction > 0
-            
+            HapticFeedbackManager.shared.playSelection()
             withAnimation(.spring(duration: 0.5)) {
                 cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
                 currentSwipeOffset = 0

@@ -123,17 +123,16 @@ struct QuizView: View {
                     quiz?.answerCurrentQuestion(with: selected)
                     selectedAnswer = nil
                     currentQuestionIndex += 1
+                    HapticFeedbackManager.shared.playSelection()
                     if let nextQuestion = quiz?.currentQuestion {
                         shuffledAnswers = nextQuestion.allAnswers
                     }
                     if quiz?.isCompleted == true {
                         showResult = true
-                        HapticFeedbackManager.shared.playImpact(style: .medium)
                     }
                 }
             } label: {
                 Text("İlerle")
-                    .disabled(selectedAnswer == nil)
                     .padding()
                     .frame(minWidth: 120)
                     .background(selectedAnswer == nil ? Color.gray : Color.blue)
@@ -142,6 +141,7 @@ struct QuizView: View {
                     .scaleEffect(selectedAnswer == nil ? 1.0 : 1.1)
                     .animation(.spring(response: 0.2, dampingFraction: 0.5, blendDuration: 0.5), value: selectedAnswer)
             }
+            .disabled(selectedAnswer == nil)
         }
         .padding()
     }

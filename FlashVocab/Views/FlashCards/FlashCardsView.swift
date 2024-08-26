@@ -48,7 +48,7 @@ struct FlashCardsView: View {
         .navigationTitle("FlashVocab")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-
+        
         .animation(.smooth, value: cardOffsets)
         .onAppear(perform: loadLastIndex)
         .onChange(of: currentIndex) { oldValue, newValue in
@@ -76,25 +76,26 @@ struct FlashCardsView: View {
     }
     
     private func handleSwipe(dragOffset: CGSize, for index: Int) {
-           let swipeThreshold: CGFloat = 100
-           if abs(dragOffset.width) > swipeThreshold {
-               let direction: CGFloat = dragOffset.width > 0 ? 1 : -1
-               let isKnown = direction > 0
-               
-               withAnimation(.spring(duration: 0.5)) {
-                   cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
-                   currentSwipeOffset = 0
-               }
-               
-               DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                   userDidSelect(index: index, isKnown: isKnown)
-               }
-           } else {
-               withAnimation(.spring(duration: 0.3)) {
-                   currentSwipeOffset = 0
-               }
-           }
-       }
+        let swipeThreshold: CGFloat = 100
+        if abs(dragOffset.width) > swipeThreshold {
+            let direction: CGFloat = dragOffset.width > 0 ? 1 : -1
+            let isKnown = direction > 0
+            
+            withAnimation(.spring(duration: 0.5)) {
+                cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
+                currentSwipeOffset = 0
+            }
+            HapticFeedbackManager.shared.playSelection()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                userDidSelect(index: index, isKnown: isKnown)
+            }
+        } else {
+            withAnimation(.spring(duration: 0.3)) {
+                currentSwipeOffset = 0
+            }
+        }
+    }
     
     private func userDidSelect(index: Int, isKnown: Bool) {
         let word = items[index]
@@ -110,19 +111,19 @@ struct FlashCardsView: View {
     }
     
     private func loadLastIndex() {
-            if let appState = appStates.first {
-                currentIndex = appState.lastCardIndex
-                print("currentindex: \(currentIndex)")
-            } else {
-                let newAppState = AppState(lastCardIndex: 0)
-                modelContext.insert(newAppState)
-            }
+        if let appState = appStates.first {
+            currentIndex = appState.lastCardIndex
+            print("currentindex: \(currentIndex)")
+        } else {
+            let newAppState = AppState(lastCardIndex: 0)
+            modelContext.insert(newAppState)
         }
-        
-        private func saveLastIndex(_ index: Int) {
-            if let appState = appStates.first {
-                print("appState lastCarIndex: \(appState.lastCardIndex)")
-                appState.lastCardIndex = index
-            }
+    }
+    
+    private func saveLastIndex(_ index: Int) {
+        if let appState = appStates.first {
+            print("appState lastCarIndex: \(appState.lastCardIndex)")
+            appState.lastCardIndex = index
         }
+    }
 }

@@ -10,9 +10,6 @@ import SwiftUI
 struct QuizDetailView: View {
     let quiz: Quiz
     
-    @State private var showingQuestionDetails = false
-    @State private var selectedQuestion: QuizQuestion?
-    
     var body: some View {
         ScrollView {
             VStack(spacing: 25) {
@@ -86,58 +83,4 @@ struct QuizDetailView: View {
     private var incorrectAnswersCount: Int {
         quiz.questions.filter { !$0.isCorrect }.count
     }
- 
-    private var questionsGrid: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 15) {
-            ForEach(quiz.questions) { question in
-                Button(action: {
-                    selectedQuestion = question
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(question.isCorrect ? Color.green.opacity(0.2) : Color.red.opacity(0.2))
-                            .frame(height: 80)
-                        
-                        Text(question.word.english)
-                            .font(.caption)
-                            .fontWeight(.medium)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-            }
-        }
-    }
-    
-    private var performanceChart: some View {
-           VStack(alignment: .leading, spacing: 10) {
-               Text("Performans Analizi")
-                   .font(.headline)
-                   .padding(.bottom, 5)
-               
-               ForEach(0..<quiz.questions.count, id: \.self) { index in
-                   HStack {
-                       Text("\(index + 1).")
-                           .font(.caption)
-                           .frame(width: 25, alignment: .leading)
-                       
-                       Rectangle()
-                           .fill(quiz.questions[index].isCorrect ? Color.green : Color.red)
-                           .frame(height: 20)
-                           .overlay(
-                               Text(quiz.questions[index].word.english)
-                                   .font(.caption)
-                                   .foregroundColor(.white)
-                                   .padding(.horizontal, 5)
-                           )
-                           .cornerRadius(5)
-                       
-                       Image(systemName: quiz.questions[index].isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
-                           .foregroundColor(quiz.questions[index].isCorrect ? .green : .red)
-                   }
-               }
-           }
-           .padding()
-           .background(Color(.secondarySystemBackground))
-           .cornerRadius(20)
-       }
 }
