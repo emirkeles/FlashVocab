@@ -43,6 +43,9 @@ struct FlashCardsView: View {
                     ContentUnavailableView("Gösterilecek kart kalmadı!", systemImage: "figure.wave")
                 }
                 .frame(width: 350, height: 450)
+                .onAppear {
+                    AnalyticsManager.shared.logFlashCardSessionCompleted(cardsReviewed: items.count)
+                }
             }
         }
         .navigationTitle("FlashVocab")
@@ -50,7 +53,11 @@ struct FlashCardsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         
         .animation(.smooth, value: cardOffsets)
-        .onAppear(perform: loadLastIndex)
+        .onAppear {
+            loadLastIndex()
+            AnalyticsManager.shared.logScreenView(screenName: "FlashCards", screenClass: "FlashCardsView")
+            AnalyticsManager.shared.logFlashCardSessionStarted(cardCount: items.count)
+        }
         .onChange(of: currentIndex) { oldValue, newValue in
             saveLastIndex(newValue)
         }
@@ -76,31 +83,33 @@ struct FlashCardsView: View {
     }
     
     private func handleSwipe(dragOffset: CGSize, for index: Int) {
-        let swipeThreshold: CGFloat = 100
-        if abs(dragOffset.width) > swipeThreshold {
-            let direction: CGFloat = dragOffset.width > 0 ? 1 : -1
-            let isKnown = direction > 0
-            
-            withAnimation(.spring(duration: 0.5)) {
-                cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
-                currentSwipeOffset = 0
-            }
-            HapticFeedbackManager.shared.playSelection()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                userDidSelect(index: index, isKnown: isKnown)
-            }
-        } else {
-            withAnimation(.spring(duration: 0.3)) {
-                currentSwipeOffset = 0
-            }
-        }
-    }
+           let swipeThreshold: CGFloat = 100
+           if abs(dragOffset.width) > swipeThreshold {
+               let direction: CGFloat = dragOffset.width > 0 ? 1 : -1
+               let isKnown = direction > 0
+               
+               withAnimation(.spring(duration: 0.5)) {
+                   cardOffsets[items[index].english] = direction * UIScreen.main.bounds.width
+                   currentSwipeOffset = 0
+               }
+               HapticFeedbackManager.shared.playImpact()
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                   userDidSelect(index: index, isKnown: isKnown)
+               }
+               
+               AnalyticsManager.shared.logFlashCardSwiped(word: items[index].english, direction: isKnown ? "right" : "left")
+           } else {
+               withAnimation(.spring(duration: 0.3)) {
+                   currentSwipeOffset = 0
+               }
+           }
+       }
     
     private func userDidSelect(index: Int, isKnown: Bool) {
         let word = items[index]
         word.isKnown = isKnown
         if isKnown {
+            AnalyticsManager.shared.logWordLearned(word: word.english)
             word.learnedDate = Date()
         }
         currentIndex += 1
@@ -111,19 +120,20 @@ struct FlashCardsView: View {
     }
     
     private func loadLastIndex() {
-        if let appState = appStates.first {
-            currentIndex = appState.lastCardIndex
-            print("currentindex: \(currentIndex)")
-        } else {
-            let newAppState = AppState(lastCardIndex: 0)
-            modelContext.insert(newAppState)
+            if let appState = appStates.first {
+                currentIndex = appState.lastCardIndex
+                print("currentindex: \(currentIndex)")
+                AnalyticsManager.shared.logFlashCardResumed(atIndex: currentIndex)
+            } else {
+                let newAppState = AppState(lastCardIndex: 0)
+                modelContext.insert(newAppState)
+            }
         }
-    }
-    
-    private func saveLastIndex(_ index: Int) {
-        if let appState = appStates.first {
-            print("appState lastCarIndex: \(appState.lastCardIndex)")
-            appState.lastCardIndex = index
+        
+        private func saveLastIndex(_ index: Int) {
+            if let appState = appStates.first {
+                print("appState lastCarIndex: \(appState.lastCardIndex)")
+                appState.lastCardIndex = index
+            }
         }
-    }
 }

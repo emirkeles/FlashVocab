@@ -13,6 +13,10 @@ struct ContentView: View {
         TabView {
             NavigationStack {
                 MainView()
+                    .onAppear {
+                    AnalyticsManager.shared.setUserProperty(value: Locale.current.language.languageCode?.identifier ?? "Türkçe", forName: "language")
+                    AnalyticsManager.shared.setUserProperty(value: UIDevice.current.systemVersion, forName: "ios_version")
+                }
             }
             .tabItem { Label("Menu", systemImage: "list.dash") }
             

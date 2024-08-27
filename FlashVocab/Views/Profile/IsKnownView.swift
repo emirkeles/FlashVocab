@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseAnalytics
 
 struct IsKnownView: View {
     var isKnown: Bool
@@ -38,7 +39,16 @@ struct IsKnownView: View {
             .sheet(item: $selectedWord) { word in
                 WordDetailView(word: word)
             }
-        }
+            .onAppear {
+                AnalyticsManager.shared.logIsKnownViewOpened(isKnown: isKnown, wordCount: items.count)
+                AnalyticsManager.shared.logScreenView(screenName: isKnown ? "Known Words" : "Unknown Words", screenClass: "IsKnownView")
+            }
+            .onChange(of: searchText) { oldValue, newValue in
+                if !newValue.isEmpty {
+                    AnalyticsManager.shared.logWordSearchPerformed(isKnown: isKnown, query: newValue, resultCount: filteredItems.count)
+                }
+            }
+    }
     
     private var filteredItems: [Word] {
             if searchText.isEmpty {
@@ -66,6 +76,7 @@ struct IsKnownView: View {
                         WordCard(word: word)
                             .onTapGesture {
                                 selectedWord = word
+                                AnalyticsManager.shared.logWordDetailViewed(word: word.english, isKnown: isKnown)
                             }
                     }
                 }

@@ -22,6 +22,12 @@ struct StatisticsView: View {
             WordTypeDistributionSection(words: words, selectedTimeRange: selectedTimeRange, wordTypes: wordTypes, colors: colors)
         }
         .navigationTitle("İstatistiklerim")
+        .onAppear {
+            AnalyticsManager.shared.logScreenView(screenName: "Statistics", screenClass: "StatisticsView")
+        }
+        .onChange(of: selectedTimeRange) { oldValue, newValue in
+            AnalyticsManager.shared.logTimeRangeChanged(to: newValue.rawValue)
+        }
     }
     
     private var previousWeekWords: [Word] {

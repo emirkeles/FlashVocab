@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseAnalytics
 
 struct BookmarkedWordsView: View {
     @Query(FetchDescriptor(predicate: #Predicate<Word> { $0.bookmarked }, sortBy: [SortDescriptor<Word>(\.english)]))
@@ -15,50 +16,60 @@ struct BookmarkedWordsView: View {
     @State private var searchText: String = ""
     
     var body: some View {
-            Group {
-                if filteredItems.isEmpty {
-                    emptyStateView
-                } else {
-                    wordList
-                }
-            }
-            .navigationTitle("Yer İşaretli Kelimeler")
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Kelime ara")
-            .sheet(item: $selectedWord) { word in
-                WordDetailView(word: word)
+        Group {
+            if filteredItems.isEmpty {
+                emptyStateView
+            } else {
+                wordList
             }
         }
+        .navigationTitle("Yer İşaretli Kelimeler")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Kelime ara")
+        .sheet(item: $selectedWord) { word in
+            WordDetailView(word: word)
+        }
+        .onAppear {
+            AnalyticsManager.shared.logBookmarkedWordsViewOpened(wordCount: bookmarkedWords.count)
+            AnalyticsManager.shared.logScreenView(screenName: "Bookmarked Words", screenClass: "BookmarkedWordsView")
+        }
+        .onChange(of: searchText) { oldValue, newValue in
+            if !newValue.isEmpty {
+                AnalyticsManager.shared.logBookmarkedWordSearchPerformed(query: newValue, resultCount: filteredItems.count)
+            }
+        }
+    }
     
     private var emptyStateView: some View {
-            ContentUnavailableView {
-                Label("Kelime bulunamadı", systemImage: "book.fill")
-            } description: {
-                Text(searchText.isEmpty ? "Hiç kelime eklenmemiş" : "Arama sonucu bulunamadı")
-            }
+        ContentUnavailableView {
+            Label("Kelime bulunamadı", systemImage: "book.fill")
+        } description: {
+            Text(searchText.isEmpty ? "Hiç kelime eklenmemiş" : "Arama sonucu bulunamadı")
         }
+    }
     
     private var wordList: some View {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(filteredItems) { word in
-                        WordCard(word: word)
-                            .onTapGesture {
-                                selectedWord = word
-                            }
-                    }
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(filteredItems) { word in
+                    WordCard(word: word)
+                        .onTapGesture {
+                            selectedWord = word
+                            AnalyticsManager.shared.logBookmarkedWordDetailViewed(word: word.english)
+                        }
                 }
-                .padding()
             }
+            .padding()
         }
+    }
     
     private var filteredItems: [Word] {
-            if searchText.isEmpty {
-                return bookmarkedWords
-            } else {
-                return bookmarkedWords.filter { word in
-                    word.english.lowercased().contains(searchText.lowercased()) ||
-                    word.turkish.lowercased().contains(searchText.lowercased())
-                }
+        if searchText.isEmpty {
+            return bookmarkedWords
+        } else {
+            return bookmarkedWords.filter { word in
+                word.english.lowercased().contains(searchText.lowercased()) ||
+                word.turkish.lowercased().contains(searchText.lowercased())
             }
         }
+    }
 }

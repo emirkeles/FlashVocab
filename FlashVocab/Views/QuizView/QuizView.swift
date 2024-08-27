@@ -56,6 +56,9 @@ struct QuizView: View {
             }
         }
         .navigationTitle("Quiz")
+        .onAppear {
+            AnalyticsManager.shared.logScreenView(screenName: "Quiz", screenClass: "QuizView")
+        }
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -82,12 +85,16 @@ struct QuizView: View {
             .cornerRadius(10)
         }
         .padding()
+        .onAppear {
+            AnalyticsManager.shared.logQuizNoAvailable()
+        }
     }
     
     
     private func createQuiz() {
         if let newQuiz = Quiz.createQuiz(from: words, context: modelContext) {
             self.quiz = newQuiz
+            AnalyticsManager.shared.logQuizStarted(questionCount: newQuiz.questions.count)
         } else {
             showNoQuizAvailable = true
         }
@@ -121,6 +128,8 @@ struct QuizView: View {
             Button {
                 if let selected = selectedAnswer {
                     quiz?.answerCurrentQuestion(with: selected)
+                    let isCorrect = selected == question.correctAnswer
+                    AnalyticsManager.shared.logQuizQuestionAnswered(questionIndex: currentQuestionIndex, correct: isCorrect)
                     selectedAnswer = nil
                     currentQuestionIndex += 1
                     HapticFeedbackManager.shared.playSelection()
@@ -129,6 +138,10 @@ struct QuizView: View {
                     }
                     if quiz?.isCompleted == true {
                         showResult = true
+                        if let score = quiz?.score {
+                            AnalyticsManager.shared.logQuizCompleted(score: score, totalQuestions: quiz?.questions.count ?? 0)
+                        }
+                        HapticFeedbackManager.shared.playImpact(style: .medium)
                     }
                 }
             } label: {
@@ -173,5 +186,6 @@ struct QuizView: View {
             shuffledAnswers = []
             createQuiz()
         }
+        AnalyticsManager.shared.logQuizRestarted()
     }
 }

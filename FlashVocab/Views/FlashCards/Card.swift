@@ -141,12 +141,16 @@ struct Card: View {
     private func speakWord() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         SpeechSynthesizer.shared.speak(word.english)
+        AnalyticsManager.shared.logWordSpoken(word: word.english)
     }
     
     private func toggleInfo() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         withAnimation(.snappy(duration: 0.4)) {
             show.toggle()
+        }
+        if show {
+            AnalyticsManager.shared.logCardFlipped(word: word.english)
         }
     }
     
@@ -159,6 +163,12 @@ struct Card: View {
             : ("bookmark.slash.fill", "Yer İşaretlerinden Çıkartıldı")
             ToastManager.shared.showToast(icon: icon, title: title)
             showToast = true
+            
+            if word.bookmarked {
+                AnalyticsManager.shared.logCardBookmarked(word: word.english)
+            } else {
+                AnalyticsManager.shared.logCardUnbookmarked(word: word.english)
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 showToast = false
