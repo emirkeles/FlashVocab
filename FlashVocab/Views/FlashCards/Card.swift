@@ -141,16 +141,12 @@ struct Card: View {
     private func speakWord() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         SpeechSynthesizer.shared.speak(word.english)
-        AnalyticsManager.shared.logWordSpoken(word: word.english)
     }
     
     private func toggleInfo() {
         HapticFeedbackManager.shared.playImpact(style: .medium)
         withAnimation(.snappy(duration: 0.4)) {
             show.toggle()
-        }
-        if show {
-            AnalyticsManager.shared.logCardFlipped(word: word.english)
         }
     }
     
@@ -165,11 +161,10 @@ struct Card: View {
             showToast = true
             
             if word.bookmarked {
-                AnalyticsManager.shared.logCardBookmarked(word: word.english)
+                AnalyticsManager.shared.logWordBookmarked(word: word.english)
             } else {
-                AnalyticsManager.shared.logCardUnbookmarked(word: word.english)
+                AnalyticsManager.shared.logWordUnbookmarked(word: word.english)
             }
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 showToast = false
             }

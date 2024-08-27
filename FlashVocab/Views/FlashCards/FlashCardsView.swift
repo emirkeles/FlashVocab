@@ -43,9 +43,6 @@ struct FlashCardsView: View {
                     ContentUnavailableView("Gösterilecek kart kalmadı!", systemImage: "figure.wave")
                 }
                 .frame(width: 350, height: 450)
-                .onAppear {
-                    AnalyticsManager.shared.logFlashCardSessionCompleted(cardsReviewed: items.count)
-                }
             }
         }
         .navigationTitle("FlashVocab")
@@ -53,9 +50,9 @@ struct FlashCardsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         
         .animation(.smooth, value: cardOffsets)
+        .analyticsScreen(name: "FlashCards")
         .onAppear {
             loadLastIndex()
-            AnalyticsManager.shared.logScreenView(screenName: "FlashCards", screenClass: "FlashCardsView")
             AnalyticsManager.shared.logFlashCardSessionStarted(cardCount: items.count)
         }
         .onChange(of: currentIndex) { oldValue, newValue in
@@ -96,7 +93,6 @@ struct FlashCardsView: View {
                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                    userDidSelect(index: index, isKnown: isKnown)
                }
-               
                AnalyticsManager.shared.logFlashCardSwiped(word: items[index].english, direction: isKnown ? "right" : "left")
            } else {
                withAnimation(.spring(duration: 0.3)) {
@@ -123,7 +119,6 @@ struct FlashCardsView: View {
             if let appState = appStates.first {
                 currentIndex = appState.lastCardIndex
                 print("currentindex: \(currentIndex)")
-                AnalyticsManager.shared.logFlashCardResumed(atIndex: currentIndex)
             } else {
                 let newAppState = AppState(lastCardIndex: 0)
                 modelContext.insert(newAppState)

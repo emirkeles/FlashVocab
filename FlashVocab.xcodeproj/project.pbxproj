@@ -149,7 +149,6 @@
 		750105ED2C4836DD000EB40C = {
 			isa = PBXGroup;
 			children = (
-				751AF4042C7CD4F70090ABDE /* AnalyticsManager.swift */,
 				750105F82C4836DD000EB40C /* FlashVocab */,
 				750105F72C4836DD000EB40C /* Products */,
 				751AF4012C7CD4DA0090ABDE /* Frameworks */,
@@ -275,6 +274,7 @@
 		756226A12C64BAFC00B68E61 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				751AF4042C7CD4F70090ABDE /* AnalyticsManager.swift */,
 				751D22012C696D8F0070F0F0 /* HapticManager.swift */,
 				756226A22C64BB0500B68E61 /* ToastManager.swift */,
 				758146742C7B3E7B007AF1A7 /* StreakManager.swift */,

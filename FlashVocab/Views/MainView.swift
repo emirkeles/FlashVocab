@@ -25,9 +25,6 @@ struct MainView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
-        .onChange(of: selectedTab) { oldValue, newValue in
-            AnalyticsManager.shared.logTabSelected(tab: newValue.rawValue)
-        }
     }
 }
 

@@ -33,10 +33,7 @@ struct BookmarkedFlashCardsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .animation(.smooth, value: cardOffsets)
-        .onAppear {
-            AnalyticsManager.shared.logBookmarkedFlashCardSessionStarted(cardCount: items.count)
-            AnalyticsManager.shared.logScreenView(screenName: "Bookmarked FlashCards", screenClass: "BookmarkedFlashCardsView")
-        }
+        .analyticsScreen(name: "Bookmarked FlashCards")
         .onChange(of: currentIndex) { oldValue, newValue in
             if newValue >= items.count {
                 resetCards()
@@ -120,14 +117,11 @@ struct BookmarkedFlashCardsView: View {
         }
     }
     
-    private func userDidSelect(index: Int, keepBookmarked: Bool) {
+    private func userDidSelect(index: Int) {
         let word = items[index]
-        AnalyticsManager.shared.logBookmarkedFlashCardRemoved(word: word.english)
         currentIndex += 1
         if currentIndex < items.count {
             cardOffsets[items[currentIndex].english] = 0
-        } else {
-            AnalyticsManager.shared.logBookmarkedFlashCardSessionCompleted(cardsReviewed: items.count)
         }
     }
     

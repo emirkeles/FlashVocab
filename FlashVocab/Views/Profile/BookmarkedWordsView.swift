@@ -28,15 +28,7 @@ struct BookmarkedWordsView: View {
         .sheet(item: $selectedWord) { word in
             WordDetailView(word: word)
         }
-        .onAppear {
-            AnalyticsManager.shared.logBookmarkedWordsViewOpened(wordCount: bookmarkedWords.count)
-            AnalyticsManager.shared.logScreenView(screenName: "Bookmarked Words", screenClass: "BookmarkedWordsView")
-        }
-        .onChange(of: searchText) { oldValue, newValue in
-            if !newValue.isEmpty {
-                AnalyticsManager.shared.logBookmarkedWordSearchPerformed(query: newValue, resultCount: filteredItems.count)
-            }
-        }
+        .analyticsScreen(name: "Bookmarked Words")
     }
     
     private var emptyStateView: some View {
@@ -54,7 +46,6 @@ struct BookmarkedWordsView: View {
                     WordCard(word: word)
                         .onTapGesture {
                             selectedWord = word
-                            AnalyticsManager.shared.logBookmarkedWordDetailViewed(word: word.english)
                         }
                 }
             }

@@ -85,9 +85,6 @@ struct QuizView: View {
             .cornerRadius(10)
         }
         .padding()
-        .onAppear {
-            AnalyticsManager.shared.logQuizNoAvailable()
-        }
     }
     
     
@@ -129,7 +126,7 @@ struct QuizView: View {
                 if let selected = selectedAnswer {
                     quiz?.answerCurrentQuestion(with: selected)
                     let isCorrect = selected == question.correctAnswer
-                    AnalyticsManager.shared.logQuizQuestionAnswered(questionIndex: currentQuestionIndex, correct: isCorrect)
+                    AnalyticsManager.shared.logQuizQuestionAnswered(questionWord: quiz?.currentQuestion?.word.english ?? "", correct: isCorrect)
                     selectedAnswer = nil
                     currentQuestionIndex += 1
                     HapticFeedbackManager.shared.playSelection()
@@ -186,6 +183,5 @@ struct QuizView: View {
             shuffledAnswers = []
             createQuiz()
         }
-        AnalyticsManager.shared.logQuizRestarted()
     }
 }

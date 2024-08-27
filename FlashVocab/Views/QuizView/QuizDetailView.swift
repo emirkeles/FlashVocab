@@ -22,14 +22,7 @@ struct QuizDetailView: View {
         .navigationTitle("Quiz Sonucu")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemBackground))
-        .onAppear {
-            AnalyticsManager.shared.logQuizDetailViewed(
-                quizScore: quiz.score ?? 0,
-                totalQuestions: quiz.questions.count,
-                correctAnswers: correctAnswersCount
-            )
-            AnalyticsManager.shared.logScreenView(screenName: "Quiz Detail", screenClass: "QuizDetailView")
-        }
+        .analyticsScreen(name: "Quiz Detail")
     }
     
     private var integratedPerformanceQuestionView: some View {
@@ -40,17 +33,7 @@ struct QuizDetailView: View {
             
             ForEach(quiz.questions.indices, id: \.self) { index in
                 QuestionAnswerCard(question: quiz.questions[index], questionNumber: index + 1)
-                    .onTapGesture {
-                        AnalyticsManager.shared.logQuestionDetailViewed(
-                            questionIndex: index,
-                            isCorrect: quiz.questions[index].isCorrect,
-                            word: quiz.questions[index].word.english
-                        )
-                    }
             }
-        }
-        .onAppear {
-            AnalyticsManager.shared.logPerformanceAnalysisViewed()
         }
     }
     

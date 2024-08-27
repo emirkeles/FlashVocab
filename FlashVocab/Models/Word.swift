@@ -86,18 +86,12 @@ extension Word {
                 AnalyticsManager.shared.logWordLearned(word: english)
             }
             calculateNextReviewDate()
-            AnalyticsManager.shared.logWordReviewed(word: english, wasCorrect: true, reviewCount: reviewCount)
         } else {
             reviewCount = max(0, reviewCount-1)
             nextReviewDate = Date()
-            AnalyticsManager.shared.logWordReviewed(word: english, wasCorrect: false, reviewCount: reviewCount)
         }
-        let wasKnownBefore = isKnown == true
+        AnalyticsManager.shared.logFlashCardReviewed(word: english, known: wasCorrect)
         isKnown = reviewCount >= 3
-        if !wasKnownBefore && isKnown == true {
-            AnalyticsManager.shared.logWordMastered(word: english)
-        }
-
     }
     
     private func calculateNextReviewDate() {
@@ -113,7 +107,6 @@ extension Word {
             interval = 90 * 24 * 60 * 60 // 3 ay
         }
         nextReviewDate = Date().addingTimeInterval(interval)
-        AnalyticsManager.shared.logNextReviewScheduled(word: english, daysUntilReview: Int(interval / (24 * 60 * 60)))
     }
     
     static var bookmarkedWords: FetchDescriptor<Word> {

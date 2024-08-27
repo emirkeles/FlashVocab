@@ -27,60 +27,51 @@ struct IsKnownView: View {
     }
     
     var body: some View {
-            Group {
-                if filteredItems.isEmpty {
-                    emptyStateView
-                } else {
-                    wordList
-                }
+        Group {
+            if filteredItems.isEmpty {
+                emptyStateView
+            } else {
+                wordList
             }
-            .navigationTitle(navigationTitle)
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Kelime ara")
-            .sheet(item: $selectedWord) { word in
-                WordDetailView(word: word)
-            }
-            .onAppear {
-                AnalyticsManager.shared.logIsKnownViewOpened(isKnown: isKnown, wordCount: items.count)
-                AnalyticsManager.shared.logScreenView(screenName: isKnown ? "Known Words" : "Unknown Words", screenClass: "IsKnownView")
-            }
-            .onChange(of: searchText) { oldValue, newValue in
-                if !newValue.isEmpty {
-                    AnalyticsManager.shared.logWordSearchPerformed(isKnown: isKnown, query: newValue, resultCount: filteredItems.count)
-                }
-            }
+        }
+        .analyticsScreen(name: isKnown ? "Known Words" : "Unknown Words")
+        .navigationTitle(navigationTitle)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Kelime ara")
+        .sheet(item: $selectedWord) { word in
+            WordDetailView(word: word)
+        }
     }
     
     private var filteredItems: [Word] {
-            if searchText.isEmpty {
-                return items
-            } else {
-                return items.filter { word in
-                    word.english.lowercased().contains(searchText.lowercased()) ||
-                    word.turkish.lowercased().contains(searchText.lowercased())
-                }
+        if searchText.isEmpty {
+            return items
+        } else {
+            return items.filter { word in
+                word.english.lowercased().contains(searchText.lowercased()) ||
+                word.turkish.lowercased().contains(searchText.lowercased())
             }
         }
+    }
     
     private var emptyStateView: some View {
-            ContentUnavailableView {
-                Label("Kelime bulunamadı", systemImage: "book.fill")
-            } description: {
-                Text(searchText.isEmpty ? "Hiç kelime eklenmemiş" : "Arama sonucu bulunamadı")
-            }
+        ContentUnavailableView {
+            Label("Kelime bulunamadı", systemImage: "book.fill")
+        } description: {
+            Text(searchText.isEmpty ? "Hiç kelime eklenmemiş" : "Arama sonucu bulunamadı")
         }
+    }
     
     private var wordList: some View {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(filteredItems) { word in
-                        WordCard(word: word)
-                            .onTapGesture {
-                                selectedWord = word
-                                AnalyticsManager.shared.logWordDetailViewed(word: word.english, isKnown: isKnown)
-                            }
-                    }
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(filteredItems) { word in
+                    WordCard(word: word)
+                        .onTapGesture {
+                            selectedWord = word
+                        }
                 }
-                .padding()
             }
+            .padding()
         }
+    }
 }
