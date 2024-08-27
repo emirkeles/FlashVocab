@@ -17,13 +17,17 @@ struct MainView: View {
             headerView
             topTabView
             tabView
-
+            
         }
         .onAppear {
             StreakManager.shared.updateStreak()
+            AnalyticsManager.shared.logScreenView(screenName: "Main", screenClass: "MainView")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
+        .onChange(of: selectedTab) { oldValue, newValue in
+            AnalyticsManager.shared.logTabSelected(tab: newValue.rawValue)
+        }
     }
 }
 
@@ -68,6 +72,10 @@ extension MainView {
                         color: .blue
                     )
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.shared.logMenuItemSelected(item: "New Quiz")
+                })
+                
                 NavigationLink(destination: QuizListView()) {
                     MenuCard(
                         title: "Geçmiş Quiz'ler",
@@ -76,6 +84,9 @@ extension MainView {
                         color: .green
                     )
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.shared.logMenuItemSelected(item: "Quiz History")
+                })
             }
         } else {
             VStack(spacing: 15) {
@@ -87,6 +98,9 @@ extension MainView {
                         color: .yellow
                     )
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.shared.logMenuItemSelected(item: "Flash Cards")
+                })
                 NavigationLink {
                     BookmarkedFlashCardsView()
                 } label: {
@@ -97,6 +111,9 @@ extension MainView {
                         color: .orange
                     )
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.shared.logMenuItemSelected(item: "Bookmarked Cards")
+                })
             }
         }
     }

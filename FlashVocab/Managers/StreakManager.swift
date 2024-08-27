@@ -70,6 +70,7 @@ struct StreakView: View {
         }
         .onAppear {
             streak = StreakManager.shared.currentStreak
+            AnalyticsManager.shared.logStreakUpdated(streakCount: StreakManager.shared.currentStreak)
         }
     }
 }

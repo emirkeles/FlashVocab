@@ -22,9 +22,7 @@ struct QuizRowView: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-                
                 Spacer()
-                
                 ZStack {
                     Circle()
                         .stroke(Color.secondary.opacity(0.2), lineWidth: 4)
@@ -40,7 +38,6 @@ struct QuizRowView: View {
                         .font(.system(size: 14, weight: .bold))
                 }
             }
-            
             HStack {
                 StatView(title: "Soru", value: "\(quiz.questions.count)", color: .blue)
                 StatView(title: "Doğru", value: "\(correctAnswersCount)", color: .green)

@@ -43,14 +43,20 @@ struct FlashCardsView: View {
                     ContentUnavailableView("Gösterilecek kart kalmadı!", systemImage: "figure.wave")
                 }
                 .frame(width: 350, height: 450)
+                .onAppear {
+                    AnalyticsManager.shared.logFlashCardSessionCompleted(cardsReviewed: items.count)
+                }
             }
         }
         .navigationTitle("FlashVocab")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-
         .animation(.smooth, value: cardOffsets)
-        .onAppear(perform: loadLastIndex)
+        .onAppear {
+            loadLastIndex()
+            AnalyticsManager.shared.logScreenView(screenName: "FlashCards", screenClass: "FlashCardsView")
+            AnalyticsManager.shared.logFlashCardSessionStarted(cardCount: items.count)
+        }
         .onChange(of: currentIndex) { oldValue, newValue in
             saveLastIndex(newValue)
         }
@@ -89,6 +95,8 @@ struct FlashCardsView: View {
                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                    userDidSelect(index: index, isKnown: isKnown)
                }
+               
+               AnalyticsManager.shared.logFlashCardSwiped(word: items[index].english, direction: isKnown ? "right" : "left")
            } else {
                withAnimation(.spring(duration: 0.3)) {
                    currentSwipeOffset = 0
@@ -100,6 +108,7 @@ struct FlashCardsView: View {
         let word = items[index]
         word.isKnown = isKnown
         if isKnown {
+            AnalyticsManager.shared.logWordLearned(word: word.english)
             word.learnedDate = Date()
         }
         currentIndex += 1
@@ -113,6 +122,7 @@ struct FlashCardsView: View {
             if let appState = appStates.first {
                 currentIndex = appState.lastCardIndex
                 print("currentindex: \(currentIndex)")
+                AnalyticsManager.shared.logFlashCardResumed(atIndex: currentIndex)
             } else {
                 let newAppState = AppState(lastCardIndex: 0)
                 modelContext.insert(newAppState)
