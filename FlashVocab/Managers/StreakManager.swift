@@ -5,9 +5,7 @@
 //  Created by Emir Keleş on 25.08.2024.
 //
 
-import Foundation
 import SwiftUI
-
 
 class StreakManager {
     static let shared = StreakManager()
@@ -17,40 +15,42 @@ class StreakManager {
     private let lastActivityDateKey = "lastActivityDate"
     
     var currentStreak: Int {
-           get { defaults.integer(forKey: streakKey) }
-           set { defaults.set(newValue, forKey: streakKey) }
-       }
+        get { defaults.integer(forKey: streakKey) }
+        set { defaults.set(newValue, forKey: streakKey) }
+    }
     
     var lastActivityDate: Date? {
-           get { defaults.object(forKey: lastActivityDateKey) as? Date }
-           set { defaults.set(newValue, forKey: lastActivityDateKey) }
-       }
+        get { defaults.object(forKey: lastActivityDateKey) as? Date }
+        set { defaults.set(newValue, forKey: lastActivityDateKey) }
+    }
     
     func updateStreak() {
-            let calendar = Calendar.current
-            let currentDate = Date()
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        if let lastDate = lastActivityDate,
+           let lastActivityDay = calendar.dateComponents([.day], from: lastDate).day,
+           let currentDay = calendar.dateComponents([.day], from: currentDate).day {
             
-            if let lastDate = lastActivityDate,
-               let lastActivityDay = calendar.dateComponents([.day], from: lastDate).day,
-               let currentDay = calendar.dateComponents([.day], from: currentDate).day {
-                
-                let dayDifference = currentDay - lastActivityDay
-                
-                if dayDifference == 0 {
-                    // Same day, do nothing
-                } else if dayDifference == 1 {
-                    // Next day, increment streak
-                    currentStreak += 1
-                } else {
-                    // More than one day passed, reset streak
-                    currentStreak = 1
-                }
+            let dayDifference = currentDay - lastActivityDay
+            
+            if dayDifference == 0 {
+                // Same day, do nothing
+            } else if dayDifference == 1 {
+                // Next day, increment streak
+                currentStreak += 1
             } else {
-                // First activity or data corrupted, start new streak
+                // More than one day passed, reset streak
                 currentStreak = 1
             }
-            lastActivityDate = currentDate
+        } else {
+            // First activity or data corrupted, start new streak
+            currentStreak = 1
         }
+        lastActivityDate = currentDate
+        
+        NotificationManager.shared.scheduleStreakReminderIfNeeded()
+    }
 }
 
 struct StreakView: View {

@@ -8,18 +8,20 @@
 import Foundation
 import SwiftData
 
+
+
 @Model
 final class Word: Hashable, Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case index, english, turkish, sentence, phonetic, partOfSpeech, englishMeanings
     }
-    let index: Int
-    let english: String
-    let turkish: String
-    let sentence: String
-    let phonetic: String
-    let partOfSpeech: String
-    let englishMeanings: [String]
+    var index: Int
+    @Attribute(.unique) let english: String
+    var turkish: String
+    var sentence: String
+    var phonetic: String
+    var partOfSpeech: String
+    var englishMeanings: [String]
     
     var isKnown: Bool?
     var learnedDate: Date?
@@ -73,6 +75,21 @@ final class Word: Hashable, Decodable, Identifiable {
         self.nextReviewDate = nil
         self.bookmarked = false
     }
+}
+
+struct WordData: Codable {
+    let english: String
+    let index: Int
+    let turkish: String
+    let sentence: String
+    let phonetic: String
+    let partOfSpeech: String
+    let englishMeanings: [String]
+}
+
+struct WordVersion: Codable {
+    let version: Int
+    let words: [WordData]
 }
 
 extension Word {
@@ -134,13 +151,13 @@ extension Word {
     }
     
     static var wordsNeedingReview: FetchDescriptor<Word> {
-            let now = Date()
-            let distantPast = Date.distantPast
-            var descriptor = FetchDescriptor<Word>(predicate: #Predicate<Word> { word in
-                word.isKnown == true && (word.nextReviewDate ?? distantPast) <= now
-            })
-            descriptor.sortBy = [SortDescriptor(\.nextReviewDate, order: .forward)]
-            return descriptor
-        }
+        let now = Date()
+        let distantPast = Date.distantPast
+        var descriptor = FetchDescriptor<Word>(predicate: #Predicate<Word> { word in
+            word.isKnown == true && (word.nextReviewDate ?? distantPast) <= now
+        })
+        descriptor.sortBy = [SortDescriptor(\.nextReviewDate, order: .forward)]
+        return descriptor
+    }
 }
 

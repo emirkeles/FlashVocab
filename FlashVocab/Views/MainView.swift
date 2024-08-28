@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct MainView: View {
     @State private var selectedTab: Tab = .flashCards
@@ -19,9 +20,13 @@ struct MainView: View {
             tabView
             
         }
+        .analyticsScreen(name: "MainView")
         .onAppear {
             StreakManager.shared.updateStreak()
-            AnalyticsManager.shared.logScreenView(screenName: "Main", screenClass: "MainView")
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()

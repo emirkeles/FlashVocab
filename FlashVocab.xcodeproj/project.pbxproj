@@ -23,6 +23,8 @@
 		751AF4052C7CD4F70090ABDE /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751AF4042C7CD4F70090ABDE /* AnalyticsManager.swift */; };
 		751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751D22012C696D8F0070F0F0 /* HapticManager.swift */; };
 		754242C02C55486A00086A30 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 754242BF2C55486A00086A30 /* PopupView */; settings = {ATTRIBUTES = (Required, ); }; };
+		755A19372C7F0614004368C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A19362C7F0614004368C9 /* NotificationManager.swift */; };
+		755A193A2C7F0F23004368C9 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A19392C7F0F23004368C9 /* NotificationSettingsView.swift */; };
 		756226A02C64BAD800B68E61 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */; };
 		756226A32C64BB0500B68E61 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756226A22C64BB0500B68E61 /* ToastManager.swift */; };
 		756226A52C64DE2600B68E61 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756226A42C64DE2600B68E61 /* Quiz.swift */; };
@@ -84,6 +86,9 @@
 		751AF4022C7CD4DA0090ABDE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		751AF4042C7CD4F70090ABDE /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		751D22012C696D8F0070F0F0 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		755A19362C7F0614004368C9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		755A19382C7F0BB2004368C9 /* FlashVocab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashVocab.entitlements; sourceTree = "<group>"; };
+		755A19392C7F0F23004368C9 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		7562269F2C64BAD800B68E61 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		756226A22C64BB0500B68E61 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		756226A42C64DE2600B68E61 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
@@ -166,6 +171,8 @@
 		750105F82C4836DD000EB40C /* FlashVocab */ = {
 			isa = PBXGroup;
 			children = (
+				755A19382C7F0BB2004368C9 /* FlashVocab.entitlements */,
+				751A7C1B2C7E2558001A6951 /* Tip */,
 				751AF3FF2C7CB9330090ABDE /* GoogleService-Info.plist */,
 				758146912C7BAE7E007AF1A7 /* Info.plist */,
 				753D34332C751C7300719773 /* App */,
@@ -187,6 +194,13 @@
 				750106022C4836DF000EB40C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		751A7C1B2C7E2558001A6951 /* Tip */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tip;
 			sourceTree = "<group>";
 		};
 		751AF4012C7CD4DA0090ABDE /* Frameworks */ = {
@@ -279,6 +293,7 @@
 				756226A22C64BB0500B68E61 /* ToastManager.swift */,
 				758146742C7B3E7B007AF1A7 /* StreakManager.swift */,
 				758146782C7B6C42007AF1A7 /* SpeechSynthesizer.swift */,
+				755A19362C7F0614004368C9 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -287,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				7581466E2C7B2807007AF1A7 /* WordDetailView.swift */,
+				755A19392C7F0F23004368C9 /* NotificationSettingsView.swift */,
 				756ACF392C52053500D3BFCD /* ProfileView.swift */,
 				758146762C7B54F9007AF1A7 /* WordCard.swift */,
 				75E23E152C66D86400E886C7 /* LearningProgressView.swift */,
@@ -427,6 +443,7 @@
 				7581466F2C7B2807007AF1A7 /* WordDetailView.swift in Sources */,
 				75E23E192C66D89900E886C7 /* QuizListView.swift in Sources */,
 				75C6E72E2C4BF48A0089667C /* SwipingIndicator.swift in Sources */,
+				755A19372C7F0614004368C9 /* NotificationManager.swift in Sources */,
 				758146832C7BA648007AF1A7 /* LearningTrendChart.swift in Sources */,
 				756226A52C64DE2600B68E61 /* Quiz.swift in Sources */,
 				756226A32C64BB0500B68E61 /* ToastManager.swift in Sources */,
@@ -450,6 +467,7 @@
 				758146692C7B2731007AF1A7 /* QuestionPerformanceCard.swift in Sources */,
 				751AF3CD2C7C88610090ABDE /* BookmarkOverlaySwipingIndicators.swift in Sources */,
 				750105FA2C4836DD000EB40C /* FlashVocabApp.swift in Sources */,
+				755A193A2C7F0F23004368C9 /* NotificationSettingsView.swift in Sources */,
 				751D22022C696D8F0070F0F0 /* HapticManager.swift in Sources */,
 				75E23E212C66D9B300E886C7 /* AppState.swift in Sources */,
 				758146712C7B2823007AF1A7 /* BookmarkedWordsView.swift in Sources */,
@@ -601,6 +619,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlashVocab/FlashVocab.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlashVocab/Preview Content\"";
@@ -635,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlashVocab/FlashVocab.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlashVocab/Preview Content\"";

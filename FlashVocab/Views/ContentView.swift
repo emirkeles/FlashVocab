@@ -13,10 +13,6 @@ struct ContentView: View {
         TabView {
             NavigationStack {
                 MainView()
-                    .onAppear {
-                    AnalyticsManager.shared.setUserProperty(value: Locale.current.language.languageCode?.identifier ?? "Türkçe", forName: "language")
-                    AnalyticsManager.shared.setUserProperty(value: UIDevice.current.systemVersion, forName: "ios_version")
-                }
             }
             .tabItem { Label("Menu", systemImage: "list.dash") }
             
@@ -25,10 +21,10 @@ struct ContentView: View {
             }
             .tabItem { Label("Profil", systemImage: "person.circle") }
             
-//            NavigationStack {
-//                SettingsView()
-//            }
-//            .tabItem { Label("Settings", systemImage: "gear") }
+            //            NavigationStack {
+            //                SettingsView()
+            //            }
+            //            .tabItem { Label("Settings", systemImage: "gear") }
         }
     }
 }
