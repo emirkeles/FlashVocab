@@ -118,7 +118,6 @@ struct BookmarkedFlashCardsView: View {
     }
     
     private func userDidSelect(index: Int) {
-        let word = items[index]
         currentIndex += 1
         if currentIndex < items.count {
             cardOffsets[items[currentIndex].english] = 0

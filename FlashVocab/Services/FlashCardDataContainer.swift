@@ -11,39 +11,56 @@ import SwiftData
 
 
 struct FlashCardDataContainerViewModifier: ViewModifier {
+    @AppStorage("currentWordVersion") var currentWordVersion = 0
     
     func body(content: Content) -> some View {
         content
             .modelContainer(for: [Word.self, Quiz.self, QuizQuestion.self, AppState.self]) { result in
                 do {
                     let container = try result.get()
-                    let descriptor = FetchDescriptor<Word>()
-                    let existingWords = try container.mainContext.fetchCount(descriptor)
-                    
-                    guard existingWords == 0 else { return }
+                    let context = container.mainContext
                     
                     guard let url = Bundle.main.url(forResource: "words", withExtension: "json") else {
-                        fatalError("Failed to find users.json")
+                        fatalError("Failed to find words.json")
                     }
                     let data = try Data(contentsOf: url)
-                    do {
-                        let words = try JSONDecoder().decode([Word].self, from: data)
-                        for word in words {
-                            print("\(word)'ü eklerim aga")
-                            container.mainContext.insert(word)
+                    let wordVersion = try JSONDecoder().decode(WordVersion.self, from: data)
+                    
+                    if wordVersion.version > currentWordVersion {
+                        for wordData in wordVersion.words {
+                            if let existingWord = try context.fetch(FetchDescriptor<Word>(predicate: #Predicate { $0.english == wordData.english })).first {
+                                // Mevcut kelimeyi güncelle (değişmeyen alanları koru)
+                                existingWord.index = wordData.index
+                                existingWord.turkish = wordData.turkish
+                                existingWord.sentence = wordData.sentence
+                                existingWord.phonetic = wordData.phonetic
+                                existingWord.partOfSpeech = wordData.partOfSpeech
+                                existingWord.englishMeanings = wordData.englishMeanings
+                            } else {
+                                // Yeni kelime ekle
+                                let newWord = Word(index: wordData.index, english: wordData.english,
+                                                   turkish: wordData.turkish,
+                                                   sentence: wordData.sentence,
+                                                   phonetic: wordData.phonetic,
+                                                   partOfSpeech: wordData.partOfSpeech,
+                                                   englishMeanings: wordData.englishMeanings
+                                )
+                                context.insert(newWord)
+                            }
                         }
-                    } catch {
-                        print("decode hatası")
+                        
+                        currentWordVersion = wordVersion.version
                     }
                 } catch {
-                    print("Failed to pre-seed database.")
+                    print("Failed to update words: \(error)")
                 }
             }
     }
 }
 
+
 extension View {
-    func flashCardDataContainer(inMemory: Bool = true) -> some View {
+    func flashCardDataContainer() -> some View {
         modifier(FlashCardDataContainerViewModifier())
     }
 }
