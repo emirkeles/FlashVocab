@@ -13,7 +13,7 @@ struct LearningTrendSection: View {
     
     var body: some View {
         Section(header: Text("Öğrenme Trendi")) {
-            TimeRangePicker(selection: $selectedTimeRange)
+//            TimeRangePicker(selection: $selectedTimeRange)
             LearningTrendChart(data: learningTrendData())
         }
     }

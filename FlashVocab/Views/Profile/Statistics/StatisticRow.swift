@@ -21,8 +21,6 @@ struct StatisticRow: View {
                 .foregroundColor(color)
                 .font(.system(size: 24))
                 .frame(width: 32, height: 32)
-                .background(color.opacity(0.1))
-                .clipShape(Circle())
             
             VStack(alignment: .leading, spacing: 4) {
                 // Title

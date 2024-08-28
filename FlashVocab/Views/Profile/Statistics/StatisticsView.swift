@@ -12,14 +12,14 @@ struct StatisticsView: View {
     @Query private var words: [Word]
     @State private var selectedTimeRange: TimeRange = .week
     
-    private let wordTypes = ["n.", "v.", "adj.", "adv.", "other"]
-    private let colors: [Color] = [.blue, .green, .orange, .purple, .gray]
+    private let wordTypes = ["n.", "v.", "adj.", "adv.", "phrase", "other"]
+    private let colors: [Color] = [.blue, .green, .orange, .purple, .red, .gray]
     
     var body: some View {
         List {
             LearningStatisticsSection(words: words, previousWords: previousWeekWords)
-            LearningTrendSection(words: words, selectedTimeRange: $selectedTimeRange)
             WordTypeDistributionSection(words: words, selectedTimeRange: selectedTimeRange, wordTypes: wordTypes, colors: colors)
+            LearningTrendSection(words: words, selectedTimeRange: $selectedTimeRange)
         }
         .navigationTitle("İstatistiklerim")
         .analyticsScreen(name: "Statistics")
