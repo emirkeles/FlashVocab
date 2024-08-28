@@ -15,11 +15,11 @@ class SpeechSynthesizer {
     
     private init() { }
     
-    func speak(_ text: String, language: String = "en-US") {
+    func speak(_ text: String, language: String = "en-US", rate: Float = 0.1) {
         let utterance = AVSpeechUtterance(string: text)
         if let voice = AVSpeechSynthesisVoice(language: language) {
             utterance.voice = voice
-            utterance.rate = 0.3
+            utterance.rate = rate
             synthesizer.speak(utterance)
         }
     }

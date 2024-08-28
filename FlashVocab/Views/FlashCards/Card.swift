@@ -47,12 +47,18 @@ struct Card: View {
     private var wordHeader: some View {
         VStack {
             Text(word.english.capitalized)
+                .readingLocation(onChange: { location in
+                    print(location)
+                })
                 .font(.largeTitle)
                 .foregroundStyle(.primary)
-            Text(word.phonetic)
-                .font(.title3)
-                .foregroundStyle(.secondary)
-            
+                Text(word.phonetic)
+                    .font(.title3)
+                    .foregroundStyle(.secondary)
+                
+                Text("(\(word.partOfSpeech))")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
         }
         .padding(.top, show ? 40 : 0)
         .offset(y: show ? 0 : -80)
@@ -68,8 +74,9 @@ struct Card: View {
                 Text("Meaning:")
                     .font(.headline)
                 ForEach(word.englishMeanings, id: \.self) { meaning in
-                    Text("(\(word.partOfSpeech)) ")
+                    Text("• ")
                         .font(.subheadline)
+                        .fontWeight(.bold)
                     +
                     Text("\(meaning)")
                         .font(.subheadline)
@@ -77,8 +84,17 @@ struct Card: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             VStack(alignment: .leading, spacing: 10) {
-                Text("Example:")
-                    .font(.headline)
+                HStack {
+                    Text("Example:")
+                        .font(.headline)
+                    Button(action: {
+                        HapticFeedbackManager.shared.playSelection()
+                        SpeechSynthesizer.shared.speak(word.sentence, rate: 0.25)
+                    }, label: {
+                        Image(systemName: "speaker.3.fill")
+                            .foregroundStyle(.blue)
+                    })
+                }
                 Text("\(attributedSentence)")
                     .font(.subheadline)
             }
