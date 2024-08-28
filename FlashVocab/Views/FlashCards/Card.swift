@@ -47,9 +47,6 @@ struct Card: View {
     private var wordHeader: some View {
         VStack {
             Text(word.english.capitalized)
-                .readingLocation(onChange: { location in
-                    print(location)
-                })
                 .font(.largeTitle)
                 .foregroundStyle(.primary)
                 Text(word.phonetic)
