@@ -148,7 +148,6 @@ struct ProfileView: View {
             }
             
             currentWordVersion = wordVersion.version
-            print("Yeni veriler başarıyla yüklendi. Yeni versiyon: \(currentWordVersion)")
         } catch {
             print("Yeni verileri yükleme sırasında hata oluştu: \(error)")
         }

@@ -172,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				755A19382C7F0BB2004368C9 /* FlashVocab.entitlements */,
-				751A7C1B2C7E2558001A6951 /* Tip */,
 				751AF3FF2C7CB9330090ABDE /* GoogleService-Info.plist */,
 				758146912C7BAE7E007AF1A7 /* Info.plist */,
 				753D34332C751C7300719773 /* App */,
@@ -194,13 +193,6 @@
 				750106022C4836DF000EB40C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		751A7C1B2C7E2558001A6951 /* Tip */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tip;
 			sourceTree = "<group>";
 		};
 		751AF4012C7CD4DA0090ABDE /* Frameworks */ = {

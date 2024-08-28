@@ -17,7 +17,6 @@ struct SettingsView: View {
     var body: some View {
         Button("Bütün Verileri Sil", role: .destructive) {
             for item in items {
-                print("siliyom")
                 modelContext.delete(item)
             }
             

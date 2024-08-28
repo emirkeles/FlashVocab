@@ -119,7 +119,6 @@ struct FlashCardsView: View {
     private func loadLastIndex() {
         if let appState = appStates.first {
             currentIndex = appState.lastCardIndex
-            print("currentindex: \(currentIndex)")
         } else {
             let newAppState = AppState(lastCardIndex: 0)
             modelContext.insert(newAppState)
@@ -128,7 +127,6 @@ struct FlashCardsView: View {
     
     private func saveLastIndex(_ index: Int) {
         if let appState = appStates.first {
-            print("appState lastCarIndex: \(appState.lastCardIndex)")
             appState.lastCardIndex = index
         }
     }
