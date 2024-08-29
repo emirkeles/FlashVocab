@@ -10,6 +10,7 @@ import SwiftUI
 struct WordDetailView: View {
     let word: Word
     @Environment(\.dismiss) private var dismiss
+    @State private var animateSpeaker = false
     
     var body: some View {
         ScrollView {
@@ -70,8 +71,30 @@ struct WordDetailView: View {
     
     private var sentenceCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Örnek Cümle")
-                .font(.headline)
+            HStack {
+                Text("Örnek Cümle")
+                    .font(.headline)
+                Spacer()
+                Button(action: {
+                    withAnimation(.bouncy) {
+                        animateSpeaker = true
+                    }
+                    HapticFeedbackManager.shared.playSelection()
+                    SpeechSynthesizer.shared.speak(word.sentence, rate: 0.25) {
+                        withAnimation(.bouncy) {
+                            animateSpeaker = false
+                        }
+                    }
+                }, label: {
+                    Image(systemName: "speaker.wave.3")
+                        .symbolEffect(.variableColor, options: animateSpeaker ? .repeating : .default, value: animateSpeaker)
+                        .symbolVariant(animateSpeaker ? .fill : .none)
+                        .scaleEffect(animateSpeaker ? 1.3 : 1.0)
+                        .rotationEffect(Angle(degrees: animateSpeaker ? -30 : 0))
+                        .foregroundStyle(.blue)
+                })
+                
+            }
             Text(word.sentence)
                 .font(.body)
                 .italic()
