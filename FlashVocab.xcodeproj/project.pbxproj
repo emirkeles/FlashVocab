@@ -32,6 +32,7 @@
 		756A85F12C50AD1E0054DE9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A85F02C50AD1E0054DE9B /* SettingsView.swift */; };
 		756A85F32C50AD430054DE9B /* FlashCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A85F22C50AD430054DE9B /* FlashCardsView.swift */; };
 		756ACF3A2C52053500D3BFCD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756ACF392C52053500D3BFCD /* ProfileView.swift */; };
+		757C4BB52C7FE11A00C3C062 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C4BB42C7FE11A00C3C062 /* MailView.swift */; };
 		758146582C7B180C007AF1A7 /* BookmarkedFlashCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146572C7B180C007AF1A7 /* BookmarkedFlashCardsView.swift */; };
 		7581465A2C7B1841007AF1A7 /* MenuCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758146592C7B1841007AF1A7 /* MenuCard.swift */; };
 		7581465C2C7B1856007AF1A7 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581465B2C7B1856007AF1A7 /* TabButton.swift */; };
@@ -96,6 +97,7 @@
 		756A85F02C50AD1E0054DE9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		756A85F22C50AD430054DE9B /* FlashCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsView.swift; sourceTree = "<group>"; };
 		756ACF392C52053500D3BFCD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		757C4BB42C7FE11A00C3C062 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		758146572C7B180C007AF1A7 /* BookmarkedFlashCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedFlashCardsView.swift; sourceTree = "<group>"; };
 		758146592C7B1841007AF1A7 /* MenuCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCard.swift; sourceTree = "<group>"; };
 		7581465B2C7B1856007AF1A7 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				7581467C2C7BA5F4007AF1A7 /* Profile */,
 				753D34352C751CB600719773 /* QuizView */,
 				756A85F02C50AD1E0054DE9B /* SettingsView.swift */,
+				757C4BB42C7FE11A00C3C062 /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				758146712C7B2823007AF1A7 /* BookmarkedWordsView.swift in Sources */,
 				758146632C7B26A4007AF1A7 /* StatView.swift in Sources */,
 				758146812C7BA62A007AF1A7 /* WordTypeDistributionChart.swift in Sources */,
+				757C4BB52C7FE11A00C3C062 /* MailView.swift in Sources */,
 				75E23E142C66BC5500E886C7 /* QuizView.swift in Sources */,
 				756ACF3A2C52053500D3BFCD /* ProfileView.swift in Sources */,
 				758146892C7BA698007AF1A7 /* LearningTrendSection.swift in Sources */,

@@ -25,7 +25,7 @@ struct QuizView: View {
             if let quiz {
                 if showResult {
                     quizResultView(quiz: quiz)
-                        .transition(.asymmetric(insertion: .offset(y: 500), removal: .offset(y: 500)))
+                        .transition(.asymmetric(insertion: .offset(y: 800), removal: .offset(y: 800)))
                 } else if let currentQuestion = quiz.currentQuestion {
                     VStack(spacing: 80) {
                         Text("Soru \(currentQuestionIndex + 1) / \(quiz.questions.count)")
