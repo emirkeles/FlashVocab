@@ -104,4 +104,9 @@ final class AnalyticsManager {
         logEvent("streak_updated", parameters: ["streak_count": streakCount])
     }
     
+    // MARK: - Feedback
+    func logFeedbackButtonTapped(result: String) {
+        logEvent("feedback_tapped", parameters: ["result": result])
+    }
+    
 }
