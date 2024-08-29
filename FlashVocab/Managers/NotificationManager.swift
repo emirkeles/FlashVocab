@@ -27,7 +27,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     func scheduleReviewReminder(for word: Word) {
         let content = UNMutableNotificationContent()
-        content.title = "Kelime Tekrarı Zamanı!"
+        content.title = "Tekrar Zamanı!"
         content.body = "\(word.english) kelimesini tekrar etme zamanı geldi."
         content.sound = .default
         
@@ -41,7 +41,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     func scheduleDailyReminder() {
         let content = UNMutableNotificationContent()
         content.title = "FlashVocab"
-        content.body = "Bugün yeni kelimeler öğrenmeye ne dersiniz?"
+        content.body = "Bugün yeni kelimeler öğrenmeye ne dersin 🤔?"
         content.sound = .default
         
         var dateComponents = DateComponents()
@@ -77,12 +77,12 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     private func scheduleStreakReminder(currentStreak: Int) {
         let content = UNMutableNotificationContent()
-        content.title = "Öğrenme Streaki'nizi Koruyun!"
-        content.body = "Şu anki streaki'niz \(currentStreak) gün. Hadi bu günü de kaçırmayalım!"
+        content.title = "Günlük Serini Koru!🔥"
+        content.body = "Şu anki seriniz \(currentStreak) gün. Hadi bu günü de kaçırmayalım!"
         content.sound = .default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 21 // Akşam 9'da bildirim gönder
+        dateComponents.hour = 21
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
         let request = UNNotificationRequest(identifier: "streak-reminder", content: content, trigger: trigger)
@@ -177,16 +177,16 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     func getRandomMotivationalMessage() -> String {
         let messages = [
-            "Bugün yeni bir şey öğrenmek için harika bir gün!",
+            "Bugün yeni bir şey öğrenmek için harika bir gün!🤩",
             "Her kelime seni hedefine bir adım daha yaklaştırır.",
-            "Süreklilik başarının anahtarıdır. Devam et!",
-            "Kendini geliştirmek için ayırdığın zaman, en iyi yatırımdır.",
-            "Küçük adımlar büyük yolculukların başlangıcıdır.",
-            "Bugün öğrendiğin bir kelime, yarın kullanacağın bir araç olabilir.",
-            "Zorluklar seni daha güçlü yapar. Her yeni kelime bir zaferdir!",
-            "Dil öğrenmek bir maraton, not a sprint. Her gün ilerlemeye devam et!",
-            "Bilgi güçtür. Her yeni kelimeyle daha da güçleniyorsun.",
-            "Başarı yolculuğunda her gün yeni bir adım at. Sen yapabilirsin!"
+            "Süreklilik başarının anahtarıdır. Devam et!🔑",
+            "Kendini geliştirmek için ayırdığın zaman, en iyi yatırımdır.⏳",
+            "Küçük adımlar büyük yolculukların başlangıcıdır.🛤️",
+            "Bugün öğrendiğin bir kelime, yarın kullanacağın bir araç olabilir.🛠️",
+            "Zorluklar seni daha güçlü yapar. Her yeni kelime bir zaferdir!🏆",
+            "Dil öğrenmek bir maraton, not a sprint. Her gün ilerlemeye devam et!🏃🏅",
+            "Bilgi güçtür. Her yeni kelimeyle daha da güçleniyorsun.📚💪",
+            "Başarı yolculuğunda her gün yeni bir adım at. Sen yapabilirsin!🚀🌟"
         ]
         return messages.randomElement() ?? "Öğrenmeye devam et!"
     }
